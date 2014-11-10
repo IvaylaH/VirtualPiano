@@ -92,7 +92,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\VirtualPiano.Web\VirtualPiano.Web.csproj">
+    <ProjectReference Include="..\..\Web\VirtualPiano.Web\VirtualPiano.Web.csproj">
       <Project>{1706B8F8-6A7A-4D3C-B651-4D442F11B591}</Project>
       <Name>VirtualPiano.Web</Name>
     </ProjectReference>
