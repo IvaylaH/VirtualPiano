@@ -6,9 +6,13 @@
     using System.Web;
     using System.Web.Mvc;
 
+    using AutoMapper.QueryableExtensions;
+
     using VirtualPiano.Data;
     using VirtualPiano.Data.Common.Repository;
     using VirtualPiano.Models;
+    using VirtualPiano.Web.ViewModels.Home;
+
     public class HomeController : Controller
     {
         private IRepository<MusicSheet> musicSheetsRepo;
@@ -25,7 +29,7 @@
 
         public ActionResult MusicSheets()
         {
-            var musicSheets = this.musicSheetsRepo.All();
+            var musicSheets = this.musicSheetsRepo.All().Project().To<MusicSheetsViewModel>();
 
             return View(musicSheets);
         }
