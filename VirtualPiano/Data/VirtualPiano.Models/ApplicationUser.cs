@@ -1,6 +1,7 @@
 ﻿namespace VirtualPiano.Models
 {
     using System;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity;
     using System.Security.Claims;
     using System.Threading.Tasks;
@@ -31,6 +32,7 @@
 
         public DateTime? ModifiedOn { get; set; }
 
+        [Index]
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }
