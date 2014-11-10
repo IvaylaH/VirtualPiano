@@ -22,6 +22,8 @@
             return new ApplicationDbContext();
         }
 
+        public IDbSet<MusicSheet> MusicSheets { get; set; }
+
         public override int SaveChanges()
         {
             this.ApplyAuditInfoRules();

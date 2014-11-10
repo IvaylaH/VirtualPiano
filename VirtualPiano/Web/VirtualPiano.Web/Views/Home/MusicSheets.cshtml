@@ -1,0 +1,12 @@
+﻿@model IEnumerable<VirtualPiano.Models.MusicSheet>
+@{
+    ViewBag.Title = "MusicSheets";
+}
+
+<h2>MusicSheets</h2>
+
+@foreach (var musicSheet in Model)
+{
+    <p>@musicSheet.Title</p>
+}
+
