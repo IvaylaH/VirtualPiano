@@ -13,11 +13,6 @@
     {
         private IRepository<MusicSheet> musicSheetsRepo;
 
-        public HomeController()
-            : this(new GenericRepository<MusicSheet>(new ApplicationDbContext()))
-        {
-        }
-
         public HomeController(IRepository<MusicSheet> sheetsRepo)
         {
             this.musicSheetsRepo = sheetsRepo;
