@@ -3,13 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualPiano.Data", "VirtualPiano.Data\VirtualPiano.Data.csproj", "{39F8060F-6624-4343-9E5D-97FC76518448}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{B35B6BFB-84EF-4A45-BDDD-3820FAFBDC07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualPiano.Models", "VirtualPiano.Models\VirtualPiano.Models.csproj", "{CF6A5E47-2630-404D-AA61-B07C646CE620}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{D688B07E-0126-44CB-8FBB-4EE9F6FBA82F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualPiano.Web", "VirtualPiano.Web\VirtualPiano.Web.csproj", "{1706B8F8-6A7A-4D3C-B651-4D442F11B591}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4FF4B35D-019A-49F7-8D89-D18DE3F05D43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualPiano.Web.Tests", "VirtualPiano.Web.Tests\VirtualPiano.Web.Tests.csproj", "{B2AA2D2E-59F0-4004-BC98-7E3BECEEFDC9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualPiano.Common", "VirtualPiano.Common\VirtualPiano.Common.csproj", "{4EBCAA6E-6D4C-461B-9B18-996E2779C2E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualPiano.Data", "Data\VirtualPiano.Data\VirtualPiano.Data.csproj", "{39F8060F-6624-4343-9E5D-97FC76518448}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualPiano.Models", "Data\VirtualPiano.Models\VirtualPiano.Models.csproj", "{CF6A5E47-2630-404D-AA61-B07C646CE620}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualPiano.Web.Tests", "Tests\VirtualPiano.Web.Tests\VirtualPiano.Web.Tests.csproj", "{B2AA2D2E-59F0-4004-BC98-7E3BECEEFDC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualPiano.Web", "Web\VirtualPiano.Web\VirtualPiano.Web.csproj", "{1706B8F8-6A7A-4D3C-B651-4D442F11B591}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +25,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4EBCAA6E-6D4C-461B-9B18-996E2779C2E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EBCAA6E-6D4C-461B-9B18-996E2779C2E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EBCAA6E-6D4C-461B-9B18-996E2779C2E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EBCAA6E-6D4C-461B-9B18-996E2779C2E4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{39F8060F-6624-4343-9E5D-97FC76518448}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{39F8060F-6624-4343-9E5D-97FC76518448}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39F8060F-6624-4343-9E5D-97FC76518448}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -25,16 +37,22 @@ Global
 		{CF6A5E47-2630-404D-AA61-B07C646CE620}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF6A5E47-2630-404D-AA61-B07C646CE620}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF6A5E47-2630-404D-AA61-B07C646CE620}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1706B8F8-6A7A-4D3C-B651-4D442F11B591}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1706B8F8-6A7A-4D3C-B651-4D442F11B591}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1706B8F8-6A7A-4D3C-B651-4D442F11B591}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1706B8F8-6A7A-4D3C-B651-4D442F11B591}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B2AA2D2E-59F0-4004-BC98-7E3BECEEFDC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B2AA2D2E-59F0-4004-BC98-7E3BECEEFDC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2AA2D2E-59F0-4004-BC98-7E3BECEEFDC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2AA2D2E-59F0-4004-BC98-7E3BECEEFDC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1706B8F8-6A7A-4D3C-B651-4D442F11B591}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1706B8F8-6A7A-4D3C-B651-4D442F11B591}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1706B8F8-6A7A-4D3C-B651-4D442F11B591}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1706B8F8-6A7A-4D3C-B651-4D442F11B591}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{39F8060F-6624-4343-9E5D-97FC76518448} = {B35B6BFB-84EF-4A45-BDDD-3820FAFBDC07}
+		{CF6A5E47-2630-404D-AA61-B07C646CE620} = {B35B6BFB-84EF-4A45-BDDD-3820FAFBDC07}
+		{B2AA2D2E-59F0-4004-BC98-7E3BECEEFDC9} = {4FF4B35D-019A-49F7-8D89-D18DE3F05D43}
+		{1706B8F8-6A7A-4D3C-B651-4D442F11B591} = {D688B07E-0126-44CB-8FBB-4EE9F6FBA82F}
 	EndGlobalSection
 EndGlobal
