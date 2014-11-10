@@ -255,6 +255,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Data\VirtualPiano.Data.Common\VirtualPiano.Data.Common.csproj">
+      <Project>{7c7f21f7-8c90-4b73-826d-e660238ce5c3}</Project>
+      <Name>VirtualPiano.Data.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Data\VirtualPiano.Data\VirtualPiano.Data.csproj">
       <Project>{39f8060f-6624-4343-9e5d-97fc76518448}</Project>
       <Name>VirtualPiano.Data</Name>

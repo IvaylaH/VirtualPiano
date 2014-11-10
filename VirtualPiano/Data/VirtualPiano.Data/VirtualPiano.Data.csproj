@@ -53,9 +53,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\VirtualPiano.Data.Common\VirtualPiano.Data.Common.csproj">
+      <Project>{7c7f21f7-8c90-4b73-826d-e660238ce5c3}</Project>
+      <Name>VirtualPiano.Data.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\VirtualPiano.Models\VirtualPiano.Models.csproj">
       <Project>{cf6a5e47-2630-404d-aa61-b07c646ce620}</Project>
       <Name>VirtualPiano.Models</Name>
