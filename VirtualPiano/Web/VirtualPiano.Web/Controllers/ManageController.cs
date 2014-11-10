@@ -6,7 +6,9 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+
 using VirtualPiano.Web.Models;
+using VirtualPiano.Models;
 
 namespace VirtualPiano.Web.Controllers
 {

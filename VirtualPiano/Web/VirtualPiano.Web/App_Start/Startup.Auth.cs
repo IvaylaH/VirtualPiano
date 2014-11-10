@@ -5,7 +5,10 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
+
 using VirtualPiano.Web.Models;
+using VirtualPiano.Models;
+using VirtualPiano.Data;
 
 namespace VirtualPiano.Web
 {
