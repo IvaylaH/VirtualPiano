@@ -22,7 +22,7 @@ namespace VirtualPiano.Web
         private static void RegisterStylesBundles(BundleCollection bundles)
         {
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                    "~/Content/bootstrap.css"));
+                    "~/Content/bootstrap.sandstone.css"));
 
             bundles.Add(new StyleBundle("~/Content/customCss").Include(
                     "~/Content/site.css"));
