@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
+using VirtualPiano.Web.App_Start;
 using VirtualPiano.Web.Infrastructure.Mapping;
 
 namespace VirtualPiano.Web
@@ -15,8 +16,7 @@ namespace VirtualPiano.Web
     {
         protected void Application_Start()
         {
-            //ViewEngines.Engines.Remove();
-            //ViewEngines.Engines.Add(new RazorViewEngine());
+            ViewEnginesConfiguration.RegisterViewEngines(ViewEngines.Engines);
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

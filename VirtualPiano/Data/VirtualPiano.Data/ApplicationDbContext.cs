@@ -24,10 +24,24 @@
 
         public IDbSet<MusicSheet> MusicSheets { get; set; }
 
+        public IDbSet<MusicAd> MusicAds { get; set; }
+
+        public IDbSet<Artist> Artists { get; set; }
+
+        public IDbSet<MusicSheetsCategory> MusicCategories { get; set; }
+
+        public IDbSet<AdCategory> AdCategories { get; set; }
+
+        public IDbSet<Rating> Ratings { get; set; }
+
+        public IDbSet<Teacher> Teachers { get; set; }
+
+        // public IDbSet<ApplicationUser> Users { get; set; }
+
         public override int SaveChanges()
         {
             this.ApplyAuditInfoRules();
-            this.ApplyDeletableEntityRules();
+
             return base.SaveChanges();
         }
 
@@ -53,22 +67,6 @@
                 {
                     entity.ModifiedOn = DateTime.Now;
                 }
-            }
-        }
-
-        private void ApplyDeletableEntityRules()
-        {
-            // Approach via @julielerman: http://bit.ly/123661P
-            foreach (
-                var entry in
-                    this.ChangeTracker.Entries()
-                        .Where(e => e.Entity is IDeletableEntity && (e.State == EntityState.Deleted)))
-            {
-                var entity = (IDeletableEntity)entry.Entity;
-
-                entity.DeletedOn = DateTime.Now;
-                entity.IsDeleted = true;
-                entry.State = EntityState.Modified;
             }
         }
     }

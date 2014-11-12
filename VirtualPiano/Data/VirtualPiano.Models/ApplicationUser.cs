@@ -9,13 +9,17 @@
     using Microsoft.AspNet.Identity.EntityFramework;
 
     using VirtualPiano.Data.Common.Models;
+using System.Collections.Generic;
 
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
     {
+        private ICollection<MusicAd> ads;
+
         public ApplicationUser()
         {
             // this will prevent UserManager.CreateAsync from causing exception
             this.CreatedOn = DateTime.Now;
+            this.ads = new HashSet<MusicAd>();
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
@@ -24,6 +28,18 @@
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             // Add custom user claims here
             return userIdentity;
+        }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public bool IsTeacher { get; set; }
+
+        public virtual ICollection<MusicAd> Ads 
+        {
+            get { return this.ads; }
+            set { this.ads = value; }
         }
 
         public DateTime CreatedOn { get; set; }
