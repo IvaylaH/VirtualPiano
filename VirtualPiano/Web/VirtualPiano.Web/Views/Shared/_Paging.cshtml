@@ -1,0 +1,31 @@
+﻿<div class="text-center">
+    <ul class="pagination">
+        @{
+            string requestUrl;
+        }
+
+        @if (ViewData["sortBy"] != null)
+        {
+            requestUrl = string.Format("{0}{1}{2}", "?sortBy=", ViewData["SortBy"], "&page=");
+        }
+        else
+        {
+            requestUrl = string.Format("{0}", "?page=");
+        }
+
+        <li><a href=@string.Format("{0}{1}", @requestUrl, Model.PreviousPage)><i class="glyphicon glyphicon-step-backward"></i></a></li>
+        @for (int i = 1; i <= Model.PagesCount; i++)
+        {
+            if (i == Model.CurrentPage)
+            {
+                <li class="active"><a href=@string.Format("{0}{1}", @requestUrl, i)>@i</a></li>
+            }
+            else
+            {
+                <li><a href=@string.Format("{0}{1}", @requestUrl, i)>@i</a></li>
+            }
+        }
+        <li><a href=@string.Format("{0}{1}", @requestUrl, Model.NextPage)><i class="glyphicon glyphicon-step-forward"></i></a></li>
+    </ul>
+</div>
+

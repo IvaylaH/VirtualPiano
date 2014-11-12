@@ -1,5 +1,5 @@
 ﻿@using VirtualPiano.Web.Areas.MusicSheets.ViewModels
-@model IEnumerable<MusicSheetsListAllModelView>
+@model SheetsAllViewModel
 @{
     ViewBag.Title = "List all music sheets";
 }
@@ -10,13 +10,17 @@
 
 @Html.Partial("_SortFilterSheets")
 
+@*@{
+    ViewData["sortBy"] = Request.Params["sortBy"];
+}*@
+
 @if (@Model == null)
 {
     @Html.Partial("_NoItemsFound", "music sheets")
 }
 else
 {
-    foreach (var sheet in @Model)
+    foreach (var sheet in Model.MusicSheets)
     {
         <div class="row">
             <div class="col-md-2">
@@ -38,5 +42,11 @@ else
         </div>
         <hr />
     }
+}
+@if (Model.PagesCount != 0)
+{
+    <div class="col-md-9">
+        @Html.Partial("_Paging", @Model, ViewData)
+    </div>
 }
 

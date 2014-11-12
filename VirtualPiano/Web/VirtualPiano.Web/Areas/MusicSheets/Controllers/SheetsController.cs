@@ -27,17 +27,32 @@
             return View();
         }
 
-        public ActionResult All(string sortBy)
+        public ActionResult All(string sortBy, int page = 1, int perPage = 2)
         {
-            var musicSheets = this.repo.All(); 
+            var pagesCount = (int)Math.Ceiling(this.repo.All().Count() / (decimal)perPage);
+            var musicSheets = this.repo.All();
+            ViewData["sortBy"] = sortBy;
+            ViewData["page"] = page;
+
             musicSheets = this.SortMusicSheets(sortBy, musicSheets);
 
+            var result = musicSheets
+                .Skip(perPage * (page - 1))
+                .Take(perPage)
+                .ToList();
+            
             Mapper.CreateMap<MusicSheet, MusicSheetsListAllModelView>();
 
-            var mappedSheets = Mapper.Map<ICollection<MusicSheet>, ICollection<MusicSheetsListAllModelView>>(musicSheets.ToList());
+            var mappedSheets = Mapper.Map<ICollection<MusicSheet>, ICollection<MusicSheetsListAllModelView>>(result);
 
-            return View(mappedSheets);
-//            return null;
+            var model = new SheetsAllViewModel()
+            {
+                MusicSheets = mappedSheets,
+                CurrentPage = page,
+                PagesCount = pagesCount
+            };
+
+            return View(model);
         }
 
         public ActionResult Details(int? id)
