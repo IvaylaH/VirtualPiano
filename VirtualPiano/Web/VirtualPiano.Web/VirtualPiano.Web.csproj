@@ -209,6 +209,7 @@
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\HomeController.cs" />
     <Compile Include="Areas\MusicSheets\Controllers\SheetsController.cs" />
+    <Compile Include="Areas\MusicSheets\InputModels\InputMusicSheetViewModel.cs" />
     <Compile Include="Areas\MusicSheets\MusicSheetsAreaRegistration.cs" />
     <Compile Include="Areas\MusicSheets\ViewModels\MusicSheetDetailsViewModel.cs" />
     <Compile Include="Areas\MusicSheets\ViewModels\MusicSheetsListAllModelView.cs" />
@@ -469,12 +470,16 @@
     <Content Include="Areas\MusicSheets\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\MusicSheets\Views\Sheets\Details.cshtml" />
     <Content Include="imgs\art-music-sheet.jpg" />
-    <Content Include="imgs\colorful-music-sheet.jpg" />
-    <Content Include="imgs\music-note.jpg" />
+    <Content Include="imgs\music-notes-up-close.jpg" />
+    <Content Include="imgs\notes-from-angle.jpg" />
+    <Content Include="imgs\notes-in-black-and-white.jpg" />
+    <Content Include="imgs\pencil-and-notes.jpg" />
     <Content Include="Views\Shared\_NoItemsFound.cshtml" />
     <Content Include="Areas\MusicSheets\Views\Sheets\All.cshtml" />
     <Content Include="Areas\MusicSheets\Views\Shared\_UploadMusicSheet.cshtml" />
     <Content Include="Areas\MusicSheets\Views\Shared\_SortFilterSheets.cshtml" />
+    <Content Include="Areas\MusicSheets\Views\Sheets\Upload.cshtml" />
+    <Content Include="Areas\MusicSheets\Views\Shared\_ListCategories.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="imgs\favicons\notes.ico" />
     <Content Include="imgs\favicons\piano.ico" />
@@ -541,6 +546,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_PageFooter.cshtml" />
     <Content Include="Views\Shared\_Paging.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Notes.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\CategoryCheckBox.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -548,7 +556,6 @@
     <Folder Include="Areas\MusicSheets\Models\" />
     <Folder Include="Areas\MusicSheets\Views\Base\" />
     <Folder Include="Views\Shared\DisplayTemplates\" />
-    <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

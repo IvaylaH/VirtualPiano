@@ -10,21 +10,81 @@
 
     using VirtualPiano.Data.Common.Repository;
     using VirtualPiano.Models;
+    using VirtualPiano.Web.Areas.MusicSheets.InputModels;
     using VirtualPiano.Web.Areas.MusicSheets.ViewModels;
 
     public class SheetsController : Controller
     {
         private readonly IDeletableEntityRepository<MusicSheet> repo;
+        private readonly IRepository<MusicSheetsCategory> categoriesRepo;
+        private readonly IRepository<Artist> artistsRepo;
 
-        public SheetsController(IDeletableEntityRepository<MusicSheet> sheetsRepo)
+        public SheetsController(IDeletableEntityRepository<MusicSheet> sheetsRepo, IRepository<MusicSheetsCategory> musicCategories, IRepository<Artist> artists)
         {
             this.repo = sheetsRepo;
+            this.categoriesRepo = musicCategories;
+            this.artistsRepo = artists;
         }
 
-        // GET: MusicSheets/Sheets
-        public ActionResult Index()
+        [Authorize]
+        [HttpGet]
+        public ActionResult Upload()
         {
-            return View();
+            var categories = this.categoriesRepo.All().ToList();
+            ViewData["categories"] = categories;
+
+            var model = new InputMusicSheetViewModel();
+            return View(model);
+        }
+
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult Upload(InputMusicSheetViewModel inputModel)
+        {
+            var categories = this.categoriesRepo.All().ToList();
+            ViewData["categories"] = categories;
+
+            var selectedCategoryName = this.Request.Params["listCategories"];
+            ViewData["categoryError"] = selectedCategoryName == "Select Category" ? "* Song Genre is a required field." : null;
+            
+            if (selectedCategoryName == "Select Category" || !ModelState.IsValid)
+            {
+                return View(inputModel);
+            }
+
+            var categoryId = this.categoriesRepo.All().Where(c => c.Name == selectedCategoryName).Select(c => c.Id).FirstOrDefault();
+
+            var artistId = 0;
+            if (this.artistsRepo.All().Any(a => a.Name == inputModel.Artist))
+            {
+                artistId = this.artistsRepo.All().Where(a => a.Name == inputModel.Artist).Select(c => c.Id).FirstOrDefault();
+            }
+            else
+            {
+                var artist = new Artist
+                {
+                    Name = inputModel.Artist
+                };
+
+                this.artistsRepo.Add(artist);
+                this.artistsRepo.SaveChanges();
+                artistId = artist.Id;
+            }
+
+            var musicSheet = new MusicSheet
+            {
+                Title = inputModel.Title,
+                ArtistId = artistId,
+                CategoryId = categoryId,
+                Notes = inputModel.Notes,
+                CreatedOn = DateTime.Now
+            };
+
+            this.repo.Add(musicSheet);
+            this.repo.SaveChanges();
+
+            return this.RedirectToAction("Details", new { id = musicSheet.Id });
         }
 
         public ActionResult All(string sortBy, int page = 1, int perPage = 2)
@@ -40,7 +100,7 @@
                 .Skip(perPage * (page - 1))
                 .Take(perPage)
                 .ToList();
-            
+
             Mapper.CreateMap<MusicSheet, MusicSheetsListAllModelView>();
 
             var mappedSheets = Mapper.Map<ICollection<MusicSheet>, ICollection<MusicSheetsListAllModelView>>(result);
@@ -66,7 +126,7 @@
             Mapper.CreateMap<MusicSheet, MusicSheetDetailsViewModel>()
                 .ForMember(dest => dest.ArtistName, opt => opt.MapFrom(src => src.Artist.Name))
                 .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.Name))
-                .ForMember(dest => dest.Notes, opt => opt.MapFrom(src => src.Notes.Split(new string[] { "/r" }, StringSplitOptions.RemoveEmptyEntries)));
+                .ForMember(dest => dest.Notes, opt => opt.MapFrom(src => src.Notes.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries)));
 
             var mappedMusicSheet = Mapper.Map<MusicSheet, MusicSheetDetailsViewModel>(musicSheet);
 

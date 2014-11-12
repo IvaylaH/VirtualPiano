@@ -16,14 +16,7 @@
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
-
-.img-container {
+.thumbnail-container {
     width: 100px;
     height: 140px;
 }
@@ -38,10 +31,10 @@ textarea {
     color: lavender;
 }
 
-.links:hover {
-    color: #e2a54b;
-    background-color: lavender;
-}
+    .links:hover {
+        color: #e2a54b;
+        background-color: lavender;
+    }
 
 .sheet-info {
     font-size: 18px;
@@ -50,4 +43,19 @@ textarea {
 .sheet-heading {
     border-radius: 5px;
     padding: 5px 10px;
+}
+
+.img-container {
+    width: 270px;
+    height: 300px;
+    margin-top: 45px;
+    margin-left: 40px;
+    -ms-transform: rotate(-8deg); /* IE 9 */
+    -webkit-transform: rotate(-8deg); rotate(-deg); rotate(-deg); /* Chrome, Safari, Opera */
+    transform: rotate(-8deg);
+}
+
+.categoryCheckBox {
+    margin-left: 20px !important;
+    margin-right: 5px !important;
 }

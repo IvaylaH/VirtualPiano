@@ -10,10 +10,6 @@
 
 @Html.Partial("_SortFilterSheets")
 
-@*@{
-    ViewData["sortBy"] = Request.Params["sortBy"];
-}*@
-
 @if (@Model == null)
 {
     @Html.Partial("_NoItemsFound", "music sheets")
@@ -24,7 +20,7 @@ else
     {
         <div class="row">
             <div class="col-md-2">
-                <div class="img-container">
+                <div class="thumbnail-container">
                     <img class="img" alt="music sheet" src="@Url.Content("~/imgs/art-music-sheet.jpg")" />
                 </div>
             </div>
@@ -43,6 +39,7 @@ else
         <hr />
     }
 }
+
 @if (Model.PagesCount != 0)
 {
     <div class="col-md-9">

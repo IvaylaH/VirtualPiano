@@ -1,0 +1,60 @@
+﻿@using VirtualPiano.Web.Areas.MusicSheets.InputModels;
+@model InputMusicSheetViewModel
+@{
+    ViewBag.Title = "Upload music sheet";
+}
+
+<div class="page-header">
+    <h2>@ViewBag.Title</h2>
+</div>
+
+<div class="col-md-8">
+    @using (Html.BeginForm("Upload", "Sheets", FormMethod.Post, new { @class = "form-horizontal", encType = "multipart/form-data", name = "upload-form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        
+        if (ViewData["categoryError"] != null)
+        {
+            <span class="text-danger">@ViewData["categoryError"]</span>
+            <br/>
+        }
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { placeholder = "Please enter title for the song..." })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Artist, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Artist, new { placeholder = "Please enter the name of the artist/composer..." })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Notes, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Notes, new { placeholder = "Music notes in Virtual Piano format e.g. fDfDfads or y y u y o I" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Category, new { @class = "col-md-2 control-label" })
+            @Html.Partial("_ListCategories", ViewData["categories"])
+        </div>
+
+        <div class="form-group text-center">
+            <input type="submit" value="Upload music sheet" class="btn btn-primary btn-md" />
+        </div>
+    }
+</div>
+<div class="col-md-4">
+    <div class="img-container">
+        <img class="img" alt="notes from up close" src="~/imgs/music-notes-up-close.jpg" />
+    </div>
+</div>
+

@@ -13,7 +13,7 @@
         public int Id { get; set; }
 
         [Required]
-        [StringLength(maximumLength: 100, MinimumLength = 5)]
+        [StringLength(maximumLength: 100)]
         public string Title { get; set; }
 
         [Required]
