@@ -77,6 +77,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Web\VirtualPiano.Web.Infrastructure\VirtualPiano.Web.Infrastructure.csproj">
+      <Project>{c0839ba6-ad0c-4dc2-bce6-ef33ba023a9e}</Project>
+      <Name>VirtualPiano.Web.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\VirtualPiano.Data.Common\VirtualPiano.Data.Common.csproj">
       <Project>{7c7f21f7-8c90-4b73-826d-e660238ce5c3}</Project>
       <Name>VirtualPiano.Data.Common</Name>

@@ -8,21 +8,6 @@
     <h3>Music Sheet <small>DETAILS</small></h3>
 </div>
 
-@*<div class="row">
-        <h1 class="h1">@Model.Title <small>@Model.ArtistName</small></h1>
-    </div>
-    <div class="row">
-        <h3 class="h3"><small>Category: </small>@Model.CategoryName</h3>
-    </div>
-    <div class="row">
-        <p class="col-md-7">
-            @foreach (var line in @Model.Notes)
-            {
-                @line<br />
-            }
-        </p>
-    </div>*@
-
 <div class="panel panel-default">
     <div class="panel-heading">
         <h2 class="h2">@Model.Title <small><a href="">@Model.ArtistName</a></small></h2>
@@ -33,6 +18,9 @@
             {
                 @line<br />
             }
+            <br />
+            <br />
+            <a href="#" class="btn btn-sm btn-default">Click to play...</a>
         </div>
         <div class="col-md-5">
             <img src="@Url.Content("~/imgs/notes.png")" alt="music notes" class="img-rounded" />

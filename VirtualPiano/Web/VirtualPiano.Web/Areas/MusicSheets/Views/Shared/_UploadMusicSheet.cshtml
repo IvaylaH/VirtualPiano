@@ -1,0 +1,6 @@
+﻿@if (Request.IsAuthenticated)
+{
+    <div class="text-center">
+        @Html.ActionLink("Upload music sheet", "Upload", "Sheets", new { @class = "btn btn-md btn-info" })
+    </div>
+}

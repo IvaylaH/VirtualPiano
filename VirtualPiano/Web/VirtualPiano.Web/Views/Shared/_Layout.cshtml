@@ -19,7 +19,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Virtual Piano", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -36,6 +36,9 @@
             <p class="text-center">&copy; @DateTime.Now.Year - Telerik Academy - ASP.MVC - Virtual Piano Project</p>
         </footer>
     </div>
+    @*<div class="container modal-footer">
+        @Html.Partial("_PageFooter")
+    </div>*@
 
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

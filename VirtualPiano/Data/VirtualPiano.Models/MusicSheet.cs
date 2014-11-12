@@ -5,8 +5,9 @@
     using System.ComponentModel.DataAnnotations;
 
     using VirtualPiano.Data.Common.Models;
+    using VirtualPiano.Web.Infrastructure.Mapping;
 
-    public class MusicSheet : AuditInfo, IDeletableEntity
+    public class MusicSheet : AuditInfo, IDeletableEntity, IMapFrom<MusicSheet>
     {
         [Key]
         public int Id { get; set; }

@@ -1,0 +1,42 @@
+﻿@using VirtualPiano.Web.Areas.MusicSheets.ViewModels
+@model IEnumerable<MusicSheetsListAllModelView>
+@{
+    ViewBag.Title = "List all music sheets";
+}
+
+<div class="page-header">
+    <h2>@ViewBag.Title</h2>
+</div>
+
+@Html.Partial("_SortFilterSheets")
+
+@if (@Model == null)
+{
+    @Html.Partial("_NoItemsFound", "music sheets")
+}
+else
+{
+    foreach (var sheet in @Model)
+    {
+        <div class="row">
+            <div class="col-md-2">
+                <div class="img-container">
+                    <img class="img" alt="music sheet" src="@Url.Content("~/imgs/art-music-sheet.jpg")" />
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="row">
+                    <h2 class="sheet-heading"><small>TITLE:</small> @Html.ActionLink(@sheet.Title, "Details", "Sheets", new { id = @sheet.Id }, null)</h2>
+                </div>
+                <div class="row">
+                    <small>ARTIST:</small> <a href="#" class="sheet-info">@sheet.ArtistName</a>
+                </div>
+                <div class="row">
+                    <small>CATEGORY:</small> <a href="#" class="sheet-info">@sheet.CategoryName</a>
+                </div>
+            </div>
+        </div>
+        <hr />
+    }
+}
+

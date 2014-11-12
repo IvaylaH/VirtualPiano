@@ -211,6 +211,7 @@
     <Compile Include="Areas\MusicSheets\Controllers\SheetsController.cs" />
     <Compile Include="Areas\MusicSheets\MusicSheetsAreaRegistration.cs" />
     <Compile Include="Areas\MusicSheets\ViewModels\MusicSheetDetailsViewModel.cs" />
+    <Compile Include="Areas\MusicSheets\ViewModels\MusicSheetsListAllModelView.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -466,6 +467,13 @@
     <Content Include="Areas\MusicSheets\Views\_ViewStart.cshtml" />
     <Content Include="Areas\MusicSheets\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\MusicSheets\Views\Sheets\Details.cshtml" />
+    <Content Include="imgs\art-music-sheet.jpg" />
+    <Content Include="imgs\colorful-music-sheet.jpg" />
+    <Content Include="imgs\music-note.jpg" />
+    <Content Include="Views\Shared\_NoItemsFound.cshtml" />
+    <Content Include="Areas\MusicSheets\Views\Sheets\All.cshtml" />
+    <Content Include="Areas\MusicSheets\Views\Shared\_UploadMusicSheet.cshtml" />
+    <Content Include="Areas\MusicSheets\Views\Shared\_SortFilterSheets.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="imgs\favicons\notes.ico" />
     <Content Include="imgs\favicons\piano.ico" />
@@ -530,12 +538,15 @@
     <Content Include="Scripts\kendo\kendo.all.min.js.map" />
     <Content Include="Scripts\kendo\kendo.aspnetmvc.min.js.map" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_PageFooter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Models\" />
     <Folder Include="Areas\MusicSheets\Models\" />
     <Folder Include="Areas\MusicSheets\Views\Base\" />
+    <Folder Include="Views\Shared\DisplayTemplates\" />
+    <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
