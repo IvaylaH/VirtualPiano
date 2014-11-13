@@ -6,7 +6,7 @@
 
     using VirtualPiano.Data.Common.Models;
 
-    public class AdCategory : IDeletableEntity
+    public class AdCategory
     {
         private ICollection<MusicAd> musicAds;
 
@@ -27,9 +27,5 @@
             get { return this.musicAds; }
             set { this.musicAds = value; }
         }
-
-        public bool IsDeleted { get; set; }
-
-        public DateTime? DeletedOn { get; set; }
     }
 }

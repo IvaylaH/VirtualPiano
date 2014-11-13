@@ -2,46 +2,60 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Data.Entity;
     using System.Linq;
     using System.Web;
     using System.Web.Mvc;
 
+    using AutoMapper;
     using AutoMapper.QueryableExtensions;
 
-    using VirtualPiano.Data.Common.Repository;
+    using VirtualPiano.Data;
     using VirtualPiano.Models;
     using VirtualPiano.Web.Areas.MusicSheets.ViewModels;
+    using VirtualPiano.Web.Controllers;
 
-    public class ArtistsController : Controller
+    public class ArtistsController : BaseController
     {
         private const int artistsPerPage = 10;
         private const int DefaultPage = 1;
 
-        private readonly IRepository<Artist> artistsRepo;
-
-        public ArtistsController(IRepository<Artist> artists)
+        public ArtistsController(IVirtualPianoData data)
+            : base (data)
         {
-            this.artistsRepo = artists;
+        }
+
+        public ActionResult Details(int id)
+        {
+            //var artist = this.artistsRepo.GetById(id)
+            //    .Project().To<>
+            return null;
         }
 
         public ActionResult All(string sortBy, int page = DefaultPage, int perPage = artistsPerPage)
         {
-            var pagesCount = (int)Math.Ceiling(this.artistsRepo.All().Count() / (decimal)perPage);
+            var pagesCount = (int)Math.Ceiling(this.Data.Artists.All().Count() / (decimal)perPage);
             ViewData["sortBy"] = sortBy;
             ViewData["page"] = page;
 
-            var artists = this.artistsRepo.All();
+            var artists = this.Data.Artists.All().Include(a => a.MusicSheets);
             artists = this.SortArtists(sortBy, artists);
 
             var artistsToDisplay = artists
                 .Skip(perPage * (page - 1))
                 .Take(perPage)
-                .Project().To<AllArtistsViewModel>()
                 .ToList();
+
+            var categories = this.Data.MusicSheetsCategories.All().Include(a => a.MusicSheets).ToList();
+
+            Mapper.CreateMap<Artist, AllArtistsViewModel>();
+            Mapper.CreateMap<ICollection<MusicSheet>, ICollection<ArtistsCollectionOfSheetViewModel>>();
+
+            var artistsModel = Mapper.Map<ICollection<Artist>, ICollection<AllArtistsViewModel>>(artistsToDisplay);
 
             var model = new AllArtistsPageViewModel()
             {
-                Artists = artistsToDisplay,
+                Artists = artistsModel,
                 CurrentPage = page,
                 PagesCount = pagesCount
             };
@@ -49,10 +63,6 @@
             return View(model);
         }
 
-        public ActionResult Details()
-        {
-            return null;
-        }
 
         private IQueryable<Artist> SortArtists(string sortBy, IQueryable<Artist> artists)
         {

@@ -215,10 +215,12 @@
     <Compile Include="Areas\MusicSheets\MusicSheetsAreaRegistration.cs" />
     <Compile Include="Areas\MusicSheets\ViewModels\AllArtistsPageViewModel.cs" />
     <Compile Include="Areas\MusicSheets\ViewModels\AllArtistsViewModel.cs" />
+    <Compile Include="Areas\MusicSheets\ViewModels\ArtistsCollectionOfSheetViewModel.cs" />
     <Compile Include="Areas\MusicSheets\ViewModels\MusicSheetDetailsViewModel.cs" />
     <Compile Include="Areas\MusicSheets\ViewModels\MusicSheetsListAllModelView.cs" />
     <Compile Include="Areas\MusicSheets\ViewModels\SheetsAllViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
@@ -485,6 +487,7 @@
     <Content Include="Areas\MusicSheets\Views\Sheets\Upload.cshtml" />
     <Content Include="Areas\MusicSheets\Views\Shared\_ListCategories.cshtml" />
     <Content Include="Areas\MusicSheets\Views\Artists\All.cshtml" />
+    <Content Include="Areas\MusicSheets\Views\Artists\Details.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="imgs\favicons\notes.ico" />
     <Content Include="imgs\favicons\piano.ico" />
@@ -560,6 +563,7 @@
     <Folder Include="Areas\Administration\Models\" />
     <Folder Include="Areas\MusicSheets\Models\" />
     <Folder Include="Areas\MusicSheets\Views\Base\" />
+    <Folder Include="Views\Base\" />
     <Folder Include="Views\Shared\DisplayTemplates\" />
   </ItemGroup>
   <ItemGroup>

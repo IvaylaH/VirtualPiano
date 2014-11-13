@@ -27,6 +27,7 @@ namespace VirtualPiano.Data.Migrations
             this.SeedMusicSheets(context);
         }
 
+//        private void SeedFirstArtistAndCategoryAndMusicSheetsObjects
         private void SeedArtists(ApplicationDbContext context)
         {
             if (context.Artists.Any())

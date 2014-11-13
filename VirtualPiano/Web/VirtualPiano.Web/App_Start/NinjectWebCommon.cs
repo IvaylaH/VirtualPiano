@@ -67,9 +67,7 @@ namespace VirtualPiano.Web.App_Start
         {
             kernel.Bind<DbContext>().To<ApplicationDbContext>();
 
-            kernel.Bind(typeof(IRepository<>)).To(typeof(GenericRepository<>));
-
-            kernel.Bind(typeof(IDeletableEntityRepository<>)).To(typeof(DeletableEntityRepository<>));
+            kernel.Bind<IVirtualPianoData>().To<VirtualPianoData>();
         }
     }
 }

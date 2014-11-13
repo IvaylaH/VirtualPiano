@@ -6,7 +6,7 @@
 
     using VirtualPiano.Data.Common.Models;
 
-    public class MusicSheetsCategory : IDeletableEntity
+    public class MusicSheetsCategory
     {
         private ICollection<MusicSheet> musicSheets;
 
@@ -25,9 +25,5 @@
             get { return this.musicSheets; }
             set { this.musicSheets = value; }
         }
-
-        public bool IsDeleted { get; set; }
-
-        public DateTime? DeletedOn { get; set; }
     }
 }

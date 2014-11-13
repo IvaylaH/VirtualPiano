@@ -13,13 +13,13 @@
     using VirtualPiano.Models;
     using VirtualPiano.Web.ViewModels.Home;
 
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        private IRepository<MusicSheet> musicSheetsRepo;
 
-        public HomeController(IRepository<MusicSheet> sheetsRepo)
+        public HomeController(IVirtualPianoData data)
+            : base(data)
+
         {
-            this.musicSheetsRepo = sheetsRepo;
         }
 
         public ActionResult Index()
@@ -27,11 +27,11 @@
             return View();
         }
 
-        public ActionResult MusicSheets()
-        {
-            var musicSheets = this.musicSheetsRepo.All().Project().To<MusicSheetsViewModel>();
+        //public ActionResult MusicSheets()
+        //{
+        //    var musicSheets = this.musicSheetsRepo.All().Project().To<MusicSheetsViewModel>();
 
-            return View(musicSheets);
-        }
+        //    return View(musicSheets);
+        //}
     }
 }

@@ -62,8 +62,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
+    <Compile Include="IVirtualPianoData.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VirtualPianoData.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Web\VirtualPiano.Web.Infrastructure\VirtualPiano.Web.Infrastructure.csproj">

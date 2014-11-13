@@ -8,32 +8,27 @@
 
     using AutoMapper;
 
-    using VirtualPiano.Data.Common.Repository;
+    using VirtualPiano.Data;
     using VirtualPiano.Models;
     using VirtualPiano.Web.Areas.MusicSheets.InputModels;
     using VirtualPiano.Web.Areas.MusicSheets.ViewModels;
+    using VirtualPiano.Web.Controllers;
 
-    public class SheetsController : Controller
+    public class SheetsController : BaseController
     {
         private const int SheetsPerPage = 5;
         private const int DefaultPage = 1;
 
-        private readonly IDeletableEntityRepository<MusicSheet> repo;
-        private readonly IRepository<MusicSheetsCategory> categoriesRepo;
-        private readonly IRepository<Artist> artistsRepo;
-
-        public SheetsController(IDeletableEntityRepository<MusicSheet> sheetsRepo, IRepository<MusicSheetsCategory> musicCategories, IRepository<Artist> artists)
+        public SheetsController(IVirtualPianoData data)
+            : base(data)
         {
-            this.repo = sheetsRepo;
-            this.categoriesRepo = musicCategories;
-            this.artistsRepo = artists;
         }
 
         [Authorize]
         [HttpGet]
         public ActionResult Upload()
         {
-            var categories = this.categoriesRepo.All().ToList();
+            var categories = this.Data.MusicSheetsCategories.All().ToList();
             ViewData["categories"] = categories;
 
             var model = new InputMusicSheetViewModel();
@@ -45,23 +40,25 @@
         [HttpPost]
         public ActionResult Upload(InputMusicSheetViewModel inputModel)
         {
-            var categories = this.categoriesRepo.All().ToList();
+            var categories = this.Data.MusicSheetsCategories.All().ToList();
             ViewData["categories"] = categories;
 
             var selectedCategoryName = this.Request.Params["listCategories"];
             ViewData["categoryError"] = selectedCategoryName == "Select Category" ? "* Song Genre is a required field." : null;
-            
+
             if (selectedCategoryName == "Select Category" || !ModelState.IsValid)
             {
                 return View(inputModel);
             }
 
-            var categoryId = this.categoriesRepo.All().Where(c => c.Name == selectedCategoryName).Select(c => c.Id).FirstOrDefault();
+            var category =  this.Data.MusicSheetsCategories.All().Where(c => c.Name == selectedCategoryName).FirstOrDefault();
 
-            var artistId = 0;
-            if (this.artistsRepo.All().Any(a => a.Name == inputModel.Artist))
+            var musicSheetId = 0;
+            if (this.Data.Artists.All().Any(a => a.Name == inputModel.Artist))
             {
-                artistId = this.artistsRepo.All().Where(a => a.Name == inputModel.Artist).Select(c => c.Id).FirstOrDefault();
+                var artist = this.Data.Artists.All().FirstOrDefault(a => a.Name == inputModel.Artist);
+
+                musicSheetId = this.CreateMusicSheetObject(artist, inputModel, category);
             }
             else
             {
@@ -70,30 +67,18 @@
                     Name = inputModel.Artist
                 };
 
-                this.artistsRepo.Add(artist);
-                this.artistsRepo.SaveChanges();
-                artistId = artist.Id;
+                this.Data.Artists.Add(artist);
+
+                musicSheetId = this.CreateMusicSheetObject(artist, inputModel, category);
             }
 
-            var musicSheet = new MusicSheet
-            {
-                Title = inputModel.Title,
-                ArtistId = artistId,
-                CategoryId = categoryId,
-                Notes = inputModel.Notes,
-                CreatedOn = DateTime.Now
-            };
-
-            this.repo.Add(musicSheet);
-            this.repo.SaveChanges();
-
-            return this.RedirectToAction("Details", new { id = musicSheet.Id });
+            return this.RedirectToAction("Details", new { id = musicSheetId });
         }
 
         public ActionResult All(string sortBy, int page = DefaultPage, int perPage = SheetsPerPage)
         {
-            var pagesCount = (int)Math.Ceiling(this.repo.All().Count() / (decimal)perPage);
-            var musicSheets = this.repo.All();
+            var pagesCount = (int)Math.Ceiling(this.Data.MusicSheets.All().Count() / (decimal)perPage);
+            var musicSheets = this.Data.MusicSheets.All();
             ViewData["sortBy"] = sortBy;
             ViewData["page"] = page;
 
@@ -125,7 +110,7 @@
                 return this.RedirectToAction("All");
             }
 
-            var musicSheet = this.repo.GetById(id);
+            var musicSheet = this.Data.MusicSheets.GetById(id);
             Mapper.CreateMap<MusicSheet, MusicSheetDetailsViewModel>()
                 .ForMember(dest => dest.ArtistName, opt => opt.MapFrom(src => src.Artist.Name))
                 .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.Name))
@@ -196,6 +181,25 @@
                 default:
                     return musicSheets.OrderBy(sheet => sheet.Id);
             };
+        }
+
+        private int CreateMusicSheetObject(Artist artist, InputMusicSheetViewModel inputModel, MusicSheetsCategory category)
+        {
+            var musicSheet = new MusicSheet
+            {
+                Title = inputModel.Title,
+                ArtistId = artist.Id,
+                CategoryId = category.Id,
+                Notes = inputModel.Notes,
+                CreatedOn = DateTime.Now
+            };
+
+            artist.MusicSheets.Add(musicSheet);
+            category.MusicSheets.Add(musicSheet);
+            this.Data.MusicSheets.Add(musicSheet);
+            this.Data.SaveChanges();
+
+            return musicSheet.Id;
         }
     }
 }
