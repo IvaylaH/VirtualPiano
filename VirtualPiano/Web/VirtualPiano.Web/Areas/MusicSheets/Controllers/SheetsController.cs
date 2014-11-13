@@ -15,6 +15,9 @@
 
     public class SheetsController : Controller
     {
+        private const int SheetsPerPage = 5;
+        private const int DefaultPage = 1;
+
         private readonly IDeletableEntityRepository<MusicSheet> repo;
         private readonly IRepository<MusicSheetsCategory> categoriesRepo;
         private readonly IRepository<Artist> artistsRepo;
@@ -87,7 +90,7 @@
             return this.RedirectToAction("Details", new { id = musicSheet.Id });
         }
 
-        public ActionResult All(string sortBy, int page = 1, int perPage = 2)
+        public ActionResult All(string sortBy, int page = DefaultPage, int perPage = SheetsPerPage)
         {
             var pagesCount = (int)Math.Ceiling(this.repo.All().Count() / (decimal)perPage);
             var musicSheets = this.repo.All();
@@ -179,29 +182,20 @@
             switch (sortBy)
             {
                 case "title_desc":
-                    musicSheets = this.SortByTitleDescending(musicSheets);
-                    break;
+                    return this.SortByTitleDescending(musicSheets);
                 case "Title":
-                    musicSheets = this.SortByTitleAscending(musicSheets);
-                    break;
+                    return this.SortByTitleAscending(musicSheets);
                 case "artist_desc":
-                    musicSheets = this.SortByArtistDescending(musicSheets);
-                    break;
+                    return this.SortByArtistDescending(musicSheets);
                 case "Artist":
-                    musicSheets = this.SortByArtistAscending(musicSheets);
-                    break;
+                    return this.SortByArtistAscending(musicSheets);
                 case "category_desc":
-                    musicSheets = this.SortByCategoryDescending(musicSheets);
-                    break;
+                    return this.SortByCategoryDescending(musicSheets);
                 case "Category":
-                    musicSheets = this.SortByCategoryAscending(musicSheets);
-                    break;
+                    return this.SortByCategoryAscending(musicSheets);
                 default:
-                    musicSheets = musicSheets.OrderBy(sheet => sheet.Id);
-                    break;
-            }
-
-            return musicSheets;
+                    return musicSheets.OrderBy(sheet => sheet.Id);
+            };
         }
     }
 }

@@ -208,9 +208,13 @@
     <Compile Include="App_Start\ViewEnginesConfiguration.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\HomeController.cs" />
+    <Compile Include="Areas\MusicSheets\Controllers\ArtistsController.cs" />
+    <Compile Include="Areas\MusicSheets\Controllers\Common\BaseController.cs" />
     <Compile Include="Areas\MusicSheets\Controllers\SheetsController.cs" />
     <Compile Include="Areas\MusicSheets\InputModels\InputMusicSheetViewModel.cs" />
     <Compile Include="Areas\MusicSheets\MusicSheetsAreaRegistration.cs" />
+    <Compile Include="Areas\MusicSheets\ViewModels\AllArtistsPageViewModel.cs" />
+    <Compile Include="Areas\MusicSheets\ViewModels\AllArtistsViewModel.cs" />
     <Compile Include="Areas\MusicSheets\ViewModels\MusicSheetDetailsViewModel.cs" />
     <Compile Include="Areas\MusicSheets\ViewModels\MusicSheetsListAllModelView.cs" />
     <Compile Include="Areas\MusicSheets\ViewModels\SheetsAllViewModel.cs" />
@@ -480,6 +484,7 @@
     <Content Include="Areas\MusicSheets\Views\Shared\_SortFilterSheets.cshtml" />
     <Content Include="Areas\MusicSheets\Views\Sheets\Upload.cshtml" />
     <Content Include="Areas\MusicSheets\Views\Shared\_ListCategories.cshtml" />
+    <Content Include="Areas\MusicSheets\Views\Artists\All.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="imgs\favicons\notes.ico" />
     <Content Include="imgs\favicons\piano.ico" />
