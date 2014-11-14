@@ -210,6 +210,8 @@
     <Compile Include="Areas\Administration\Controllers\HomeController.cs" />
     <Compile Include="Areas\MusicOpennings\Controllers\OpenningsController.cs" />
     <Compile Include="Areas\MusicOpennings\MusicOpenningsAreaRegistration.cs" />
+    <Compile Include="Areas\MusicOpennings\ViewModels\AllAdsViewModel.cs" />
+    <Compile Include="Areas\MusicOpennings\ViewModels\AllAdsPageViewModel.cs" />
     <Compile Include="Areas\MusicSheets\Controllers\ArtistsController.cs" />
     <Compile Include="Areas\MusicSheets\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\MusicSheets\Controllers\Common\BaseController.cs" />
@@ -481,11 +483,9 @@
     <Content Include="Areas\MusicSheets\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\MusicSheets\Views\Sheets\Details.cshtml" />
     <Content Include="imgs\art-music-sheet.jpg" />
+    <Content Include="imgs\mic-green-bg.jpg" />
     <Content Include="imgs\music-notes-up-close.jpg" />
     <Content Include="imgs\notes-from-angle.jpg" />
-    <Content Include="imgs\notes-in-black-and-white.jpg" />
-    <Content Include="imgs\pencil-and-notes.jpg" />
-    <Content Include="imgs\piano-keys-and-notes.jpg" />
     <Content Include="imgs\piano-keys.jpg" />
     <Content Include="Views\Shared\_NoItemsFound.cshtml" />
     <Content Include="Areas\MusicSheets\Views\Sheets\All.cshtml" />
@@ -499,6 +499,10 @@
     <Content Include="Areas\MusicSheets\Views\Categories\Details.cshtml" />
     <Content Include="Areas\MusicSheets\Views\Shared\_ListMusicSheets.cshtml" />
     <Content Include="Areas\MusicOpennings\Views\web.config" />
+    <Content Include="Areas\MusicOpennings\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\MusicOpennings\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\MusicOpennings\Views\Opennings\All.cshtml" />
+    <Content Include="Areas\MusicOpennings\Views\Shared\_SortFilterOpennings.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="imgs\favicons\notes.ico" />
     <Content Include="imgs\favicons\piano.ico" />
@@ -568,20 +572,17 @@
     <Content Include="Views\Shared\EditorTemplates\Notes.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\CategoryCheckBox.cshtml" />
     <Content Include="Views\Shared\_PlayThePiano.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Models\" />
     <Folder Include="Areas\MusicOpennings\InputViewModels\" />
     <Folder Include="Areas\MusicOpennings\Models\" />
-    <Folder Include="Areas\MusicOpennings\ViewModels\" />
-    <Folder Include="Areas\MusicOpennings\Views\Opennings\" />
-    <Folder Include="Areas\MusicOpennings\Views\Shared\" />
     <Folder Include="Areas\MusicSheets\Models\" />
     <Folder Include="Areas\MusicSheets\Views\Base\" />
     <Folder Include="ViewModels\Home\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\Shared\DisplayTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -598,6 +599,10 @@
     <ProjectReference Include="..\..\Data\VirtualPiano.Models\VirtualPiano.Models.csproj">
       <Project>{cf6a5e47-2630-404d-aa61-b07c646ce620}</Project>
       <Name>VirtualPiano.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VirtualPiano.Common\VirtualPiano.Common.csproj">
+      <Project>{4ebcaa6e-6d4c-461b-9b18-996e2779c2e4}</Project>
+      <Name>VirtualPiano.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\VirtualPiano.Web.Infrastructure\VirtualPiano.Web.Infrastructure.csproj">
       <Project>{c0839ba6-ad0c-4dc2-bce6-ef33ba023a9e}</Project>

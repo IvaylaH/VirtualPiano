@@ -10,6 +10,7 @@
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
 
+    using VirtualPiano.Common;
     using VirtualPiano.Data;
     using VirtualPiano.Models;
     using VirtualPiano.Web.Areas.MusicSheets.ViewModels;
@@ -17,9 +18,6 @@
 
     public class ArtistsController : BaseController
     {
-        private const int artistsPerPage = 10;
-        private const int DefaultPage = 1;
-
         public ArtistsController(IVirtualPianoData data)
             : base(data)
         {
@@ -28,6 +26,11 @@
         [Authorize]
         public ActionResult Details(int? id)
         {
+            if (id == null)
+            {
+                return this.RedirectToAction("All");
+            }
+
             var artist = this.Data.Artists.All()
                 .Include(a => a.MusicSheets)
                 .Project()
@@ -42,7 +45,7 @@
             return View(artist);
         }
 
-        public ActionResult All(string sortBy, int page = DefaultPage, int perPage = artistsPerPage)
+        public ActionResult All(string sortBy, int page = GlobalConstants.DefaultPageForViews, int perPage = GlobalConstants.DefaultItemsPerPageForCustomViews)
         {
             var pagesCount = (int)Math.Ceiling(this.Data.Artists.All().Count() / (decimal)perPage);
             ViewData["sortBy"] = sortBy;

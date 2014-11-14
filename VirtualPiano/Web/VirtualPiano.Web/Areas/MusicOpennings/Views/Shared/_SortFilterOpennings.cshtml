@@ -1,0 +1,15 @@
+﻿<div class="row">
+    <div class="col-md-10">
+        <div class="col-md-7">
+            @Html.ActionLink("Sort by Title", "All", "Opennings", new { sortBy = ViewBag.TitleSortParam, page = ViewData["page"] }, new { @class = "btn btn-md btn-default" })
+            @Html.ActionLink("Sort by Author", "All", "Opennings", new { sortBy = ViewBag.ArtistSortParam, page = ViewData["page"] }, new { @class = "btn btn-md btn-default" })
+            @Html.ActionLink("Sort by Category", "All", "Opennings", new { sortBy = ViewBag.CategorySortParam, page = ViewData["page"] }, new { @class = "btn btn-md btn-default" })
+            @Html.ActionLink("Sort by Date", "All", "Opennings", new { sortBy = ViewBag.DateSortParam, page = ViewData["page"] }, new { @class = "btn btn-md btn-default" })
+        </div>
+
+        @*@Html.Partial("_UploadMusicSheet")*@
+        <br />
+    </div>
+</div>
+<br />
+<br />

@@ -14,12 +14,10 @@
     using VirtualPiano.Web.Areas.MusicSheets.InputModels;
     using VirtualPiano.Web.Areas.MusicSheets.ViewModels;
     using VirtualPiano.Web.Controllers;
+using VirtualPiano.Common;
 
     public class SheetsController : BaseController
     {
-        private const int SheetsPerPage = 5;
-        private const int DefaultPage = 1;
-
         public SheetsController(IVirtualPianoData data)
             : base(data)
         {
@@ -76,7 +74,7 @@
             return this.RedirectToAction("Details", new { id = musicSheetId });
         }
 
-        public ActionResult All(string sortBy, int page = DefaultPage, int perPage = SheetsPerPage)
+        public ActionResult All(string sortBy, int page = GlobalConstants.DefaultPageForViews, int perPage = GlobalConstants.DefaultItemsPerPageForCustomViews)
         {
             var pagesCount = (int)Math.Ceiling(this.Data.MusicSheets.All().Count() / (decimal)perPage);
             var musicSheets = this.Data.MusicSheets.All();

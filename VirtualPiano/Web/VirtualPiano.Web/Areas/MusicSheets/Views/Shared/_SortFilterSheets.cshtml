@@ -3,7 +3,7 @@
         <div class="col-md-6">
             @Html.ActionLink("Sort by Title", "All", "Sheets", new { sortBy = ViewBag.TitleSortParam, page = ViewData["page"] }, new { @class = "btn btn-md btn-default" })
             @Html.ActionLink("Sort by Artist", "All", "Sheets", new { sortBy = ViewBag.ArtistSortParam, page = ViewData["page"] }, new { @class = "btn btn-md btn-default" })
-            @Html.ActionLink("Sort by Category", "All", "Sheets", new { sortBy = ViewBag.CategorySortParam, page = ViewData["page"] }, new { @class = "btn btn-md btn-default" })
+            @Html.ActionLink("Sort by Genre", "All", "Sheets", new { sortBy = ViewBag.CategorySortParam, page = ViewData["page"] }, new { @class = "btn btn-md btn-default" })
         </div>
 
         @Html.Partial("_UploadMusicSheet")
