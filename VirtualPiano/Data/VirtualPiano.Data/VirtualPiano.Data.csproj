@@ -68,6 +68,10 @@
     <Compile Include="VirtualPianoData.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\VirtualPiano.Common\VirtualPiano.Common.csproj">
+      <Project>{4ebcaa6e-6d4c-461b-9b18-996e2779c2e4}</Project>
+      <Name>VirtualPiano.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Web\VirtualPiano.Web.Infrastructure\VirtualPiano.Web.Infrastructure.csproj">
       <Project>{c0839ba6-ad0c-4dc2-bce6-ef33ba023a9e}</Project>
       <Name>VirtualPiano.Web.Infrastructure</Name>
