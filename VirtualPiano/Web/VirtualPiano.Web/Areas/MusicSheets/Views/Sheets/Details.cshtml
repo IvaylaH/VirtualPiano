@@ -10,7 +10,7 @@
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h2 class="h2">@Model.Title <small><a href="">@Model.ArtistName</a></small></h2>
+        <h2 class="h2">@Model.Title <small>@Html.ActionLink(@Model.Artist.Name, "Details", "Artists", new { id = Model.Artist.Id }, null)</small></h2>
     </div>
     <div class="panel-body">
         <div class="col-md-7">

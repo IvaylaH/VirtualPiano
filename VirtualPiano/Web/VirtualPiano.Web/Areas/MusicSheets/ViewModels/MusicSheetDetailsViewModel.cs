@@ -1,11 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace VirtualPiano.Web.Areas.MusicSheets.ViewModels
+﻿namespace VirtualPiano.Web.Areas.MusicSheets.ViewModels
 {
-    public class MusicSheetDetailsViewModel
+    using System;
+    using System.Linq;
+
+    using AutoMapper;
+
+    using VirtualPiano.Models;
+    using VirtualPiano.Web.Infrastructure.Mapping;
+
+    public class MusicSheetDetailsViewModel : IMapFrom<MusicSheet>, IHaveCustomMappings
     {
         public int Id { get; set; }
 
@@ -13,8 +16,7 @@ namespace VirtualPiano.Web.Areas.MusicSheets.ViewModels
 
         public string[] Notes { get; set; }
 
-        public string ArtistName { get; set; }
+        public MusicSheetsArtistViewModel Artist { get; set; }
 
         public string CategoryName { get; set; }
-    }
 }

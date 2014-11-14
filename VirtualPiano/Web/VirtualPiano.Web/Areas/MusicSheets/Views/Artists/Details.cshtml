@@ -10,32 +10,45 @@
 
 <div class="jumbotron">
     <div class="row">
-        <h1>@Model.Name</h1>
+        <div class="col-md-6">
+            <h1>@Model.Name</h1>
+        </div>
+        <div class="col-md-4 pull-right">
+            <br />
+            <br />
+            <a href="#" class="btn btn-ld btn-success" id="searchBtn"><i class="glyphicon glyphicon-search"></i></a>
+            @*@Ajax.ActionLink("Buy", "BuyItem", "MsmqTest", new { area = "Msmq" }, new AjaxOptions { UpdateTargetId = "msmqpartial" }*@
+        </div>
     </div>
     <div class="row">
-        <a href="#" class="btn btn-md btn-success" id="searchBtn"><i class="glyphicon glyphicon-search"></i></a>
-
-        @*<br />*@
-@*@Ajax.ActionLink("Buy", "BuyItem", "MsmqTest", new { area = "Msmq" }, new AjaxOptions { UpdateTargetId = "msmqpartial" }*@
         <div id="searchBar">
 
         </div>
+    </div>
 
-        <h3>Songs List</h3>
-        <ul class="songs-list">
-            @foreach (var song in Model.MusicSheets)
-            {
-                <li>@Html.ActionLink(song.Title, "Details", "Sheets", new { id = song.Id }, null)</li>
-            }
-        </ul>
+    <br />
+    <div class="panel-success">
+        <div class="panel-heading">
+            <h2 class="panel-title songs-title">Songs List</h2>
+        </div>
+        <div class="panel-body">
+            <ul class="songs-list">
+                @foreach (var song in Model.MusicSheets)
+                {
+                    <li>
+                        <h4>@Html.ActionLink(song.Title, "Details", "Sheets", new { id = song.Id }, null)</h4>
+                    </li>
+                }
+            </ul>
+        </div>
     </div>
 </div>
 
 @*@section scripts {
-    $('#searchBtn').click(function()  { renderPartial() }; );
+        $('#searchBtn').click(function()  { renderPartial() }; );
 
-    function renderPartial() {
-        $('#searchBar').load("@Html.Raw(Url.Action()) ")
-    }
-}*@
+        function renderPartial() {
+            $('#searchBar').load("@Html.Raw(Url.Action()) ")
+        }
+    }*@
 

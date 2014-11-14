@@ -7,6 +7,7 @@
     using System.Web.Mvc;
 
     using AutoMapper;
+    using AutoMapper.QueryableExtensions;
 
     using VirtualPiano.Data;
     using VirtualPiano.Models;
@@ -111,8 +112,13 @@
             }
 
             var musicSheet = this.Data.MusicSheets.GetById(id);
+
             Mapper.CreateMap<MusicSheet, MusicSheetDetailsViewModel>()
-                .ForMember(dest => dest.ArtistName, opt => opt.MapFrom(src => src.Artist.Name))
+                .ForMember(dest => dest.Artist, opt => opt.MapFrom(sheet => new MusicSheetsArtistViewModel()
+                    {
+                        Id = sheet.Artist.Id,
+                        Name = sheet.Artist.Name
+                    }))
                 .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.Name))
                 .ForMember(dest => dest.Notes, opt => opt.MapFrom(src => src.Notes.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries)));
 

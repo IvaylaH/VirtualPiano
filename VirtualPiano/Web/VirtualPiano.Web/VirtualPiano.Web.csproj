@@ -217,6 +217,7 @@
     <Compile Include="Areas\MusicSheets\ViewModels\AllArtistsViewModel.cs" />
     <Compile Include="Areas\MusicSheets\ViewModels\ArtistsCollectionOfSheetViewModel.cs" />
     <Compile Include="Areas\MusicSheets\ViewModels\MusicSheetDetailsViewModel.cs" />
+    <Compile Include="Areas\MusicSheets\ViewModels\MusicSheetsArtistViewModel.cs" />
     <Compile Include="Areas\MusicSheets\ViewModels\MusicSheetsListAllModelView.cs" />
     <Compile Include="Areas\MusicSheets\ViewModels\SheetsAllViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />

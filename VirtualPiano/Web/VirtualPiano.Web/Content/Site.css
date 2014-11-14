@@ -59,3 +59,15 @@
     margin-left: 20px !important;
     margin-right: 5px !important;
 }
+
+.songs-title {
+    font-size: 14px !important;
+}
+
+.songs-list {
+    list-style: none;
+}
+
+.songs-list > li {
+    padding-top: 5px;
+}
