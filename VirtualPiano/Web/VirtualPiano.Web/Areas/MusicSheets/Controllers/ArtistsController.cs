@@ -51,17 +51,15 @@
             artists = this.SortArtists(sortBy, artists);
 
             var artistsToDisplay = artists
+                .Project()
+                .To<AllArtistsViewModel>()
                 .Skip(perPage * (page - 1))
                 .Take(perPage)
                 .ToList();
 
-            this.MapArtistToAllArtistsViewModel();
-
-            var artistsModel = Mapper.Map<ICollection<Artist>, ICollection<AllArtistsViewModel>>(artistsToDisplay);
-
             var model = new AllArtistsPageViewModel()
             {
-                Artists = artistsModel,
+                Artists = artistsToDisplay,
                 CurrentPage = page,
                 PagesCount = pagesCount
             };
@@ -96,10 +94,5 @@
             return artists.OrderByDescending(a => a.Name);
         }
 
-        private void MapArtistToAllArtistsViewModel()
-        {
-            Mapper.CreateMap<Artist, AllArtistsViewModel>();
-            Mapper.CreateMap<IEnumerable<MusicSheet>, IEnumerable<ArtistsCollectionOfSheetViewModel>>();
-        }
     }
 }
