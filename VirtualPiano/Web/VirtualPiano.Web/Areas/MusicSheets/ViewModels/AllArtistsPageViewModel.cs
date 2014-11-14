@@ -7,7 +7,7 @@
 
     public class AllArtistsPageViewModel
     {
-        public ICollection<AllArtistsViewModel> Artists { get; set; }
+        public IEnumerable<AllArtistsViewModel> Artists { get; set; }
 
         public int PagesCount { get; set; }
 

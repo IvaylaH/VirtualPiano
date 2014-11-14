@@ -3,7 +3,12 @@
     using System.ComponentModel.DataAnnotations;
     using System.Web;
 
-    public class ArtistsCollectionOfSheetViewModel
+    using AutoMapper;
+
+    using VirtualPiano.Models;
+    using VirtualPiano.Web.Infrastructure.Mapping;
+
+    public class ArtistsCollectionOfSheetViewModel : IMapFrom<MusicSheet>
     {
         public int Id { get; set; }
 

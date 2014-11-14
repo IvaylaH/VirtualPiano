@@ -11,7 +11,6 @@
     using VirtualPiano.Data;
     using VirtualPiano.Data.Common.Repository;
     using VirtualPiano.Models;
-    using VirtualPiano.Web.ViewModels.Home;
 
     public class HomeController : BaseController
     {

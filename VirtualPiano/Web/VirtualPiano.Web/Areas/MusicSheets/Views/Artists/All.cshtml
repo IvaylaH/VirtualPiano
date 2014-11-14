@@ -22,7 +22,7 @@
                 @foreach (var artist in Model.Artists)
                 {
                     <tr>
-                        <td>@Html.ActionLink(@artist.Name, "Details", "Artist")</td>
+                        <td>@Html.ActionLink(@artist.Name, "Details", "Artists", new { id = artist.Id }, null )</td>
                         <td>@Html.ActionLink("Sort", "All", "Artists", new { sortBy = ViewBag.NameSortParam, page = ViewData["page"] }, new { @class = "btn btn-sm btn-primary" })</td>
                     </tr>
                 }

@@ -1,7 +1,41 @@
-﻿
+﻿@using VirtualPiano.Web.Areas.MusicSheets.ViewModels
+@model AllArtistsViewModel
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Artist Details";
 }
 
-<h2>Details</h2>
+<div class="page-header">
+    <h2>@ViewBag.Title</h2>
+</div>
+
+<div class="jumbotron">
+    <div class="row">
+        <h1>@Model.Name</h1>
+    </div>
+    <div class="row">
+        <a href="#" class="btn btn-md btn-success" id="searchBtn"><i class="glyphicon glyphicon-search"></i></a>
+
+        @*<br />*@
+@*@Ajax.ActionLink("Buy", "BuyItem", "MsmqTest", new { area = "Msmq" }, new AjaxOptions { UpdateTargetId = "msmqpartial" }*@
+        <div id="searchBar">
+
+        </div>
+
+        <h3>Songs List</h3>
+        <ul class="songs-list">
+            @foreach (var song in Model.MusicSheets)
+            {
+                <li>@Html.ActionLink(song.Title, "Details", "Sheets", new { id = song.Id }, null)</li>
+            }
+        </ul>
+    </div>
+</div>
+
+@*@section scripts {
+    $('#searchBtn').click(function()  { renderPartial() }; );
+
+    function renderPartial() {
+        $('#searchBar').load("@Html.Raw(Url.Action()) ")
+    }
+}*@
 

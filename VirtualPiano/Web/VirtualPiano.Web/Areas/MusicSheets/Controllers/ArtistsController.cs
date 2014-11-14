@@ -21,15 +21,24 @@
         private const int DefaultPage = 1;
 
         public ArtistsController(IVirtualPianoData data)
-            : base (data)
+            : base(data)
         {
         }
 
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            //var artist = this.artistsRepo.GetById(id)
-            //    .Project().To<>
-            return null;
+            var artist = this.Data.Artists.All()
+                .Include(a => a.MusicSheets)
+                .Project()
+                .To<AllArtistsViewModel>()
+                .FirstOrDefault(a => a.Id == id);
+
+            if (artist == null)
+            {
+                return this.HttpNotFound("The artist was not found");
+            }
+
+            return View(artist);
         }
 
         public ActionResult All(string sortBy, int page = DefaultPage, int perPage = artistsPerPage)
@@ -46,10 +55,7 @@
                 .Take(perPage)
                 .ToList();
 
-            var categories = this.Data.MusicSheetsCategories.All().Include(a => a.MusicSheets).ToList();
-
-            Mapper.CreateMap<Artist, AllArtistsViewModel>();
-            Mapper.CreateMap<ICollection<MusicSheet>, ICollection<ArtistsCollectionOfSheetViewModel>>();
+            this.MapArtistToAllArtistsViewModel();
 
             var artistsModel = Mapper.Map<ICollection<Artist>, ICollection<AllArtistsViewModel>>(artistsToDisplay);
 
@@ -62,7 +68,6 @@
 
             return View(model);
         }
-
 
         private IQueryable<Artist> SortArtists(string sortBy, IQueryable<Artist> artists)
         {
@@ -89,6 +94,12 @@
         private IQueryable<Artist> SortByNameDescending(IQueryable<Artist> artists)
         {
             return artists.OrderByDescending(a => a.Name);
+        }
+
+        private void MapArtistToAllArtistsViewModel()
+        {
+            Mapper.CreateMap<Artist, AllArtistsViewModel>();
+            Mapper.CreateMap<IEnumerable<MusicSheet>, IEnumerable<ArtistsCollectionOfSheetViewModel>>();
         }
     }
 }
