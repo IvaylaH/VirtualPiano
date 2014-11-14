@@ -209,13 +209,16 @@
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\HomeController.cs" />
     <Compile Include="Areas\MusicSheets\Controllers\ArtistsController.cs" />
+    <Compile Include="Areas\MusicSheets\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\MusicSheets\Controllers\Common\BaseController.cs" />
     <Compile Include="Areas\MusicSheets\Controllers\SheetsController.cs" />
     <Compile Include="Areas\MusicSheets\InputModels\InputMusicSheetViewModel.cs" />
     <Compile Include="Areas\MusicSheets\MusicSheetsAreaRegistration.cs" />
     <Compile Include="Areas\MusicSheets\ViewModels\AllArtistsPageViewModel.cs" />
     <Compile Include="Areas\MusicSheets\ViewModels\AllArtistsViewModel.cs" />
-    <Compile Include="Areas\MusicSheets\ViewModels\ArtistsCollectionOfSheetViewModel.cs" />
+    <Compile Include="Areas\MusicSheets\ViewModels\CategoriesViewModel.cs" />
+    <Compile Include="Areas\MusicSheets\ViewModels\CollectionOfSheetViewModel.cs" />
+    <Compile Include="Areas\MusicSheets\ViewModels\MusicSheetsCategoryViewModel.cs" />
     <Compile Include="Areas\MusicSheets\ViewModels\MusicSheetDetailsViewModel.cs" />
     <Compile Include="Areas\MusicSheets\ViewModels\MusicSheetsArtistViewModel.cs" />
     <Compile Include="Areas\MusicSheets\ViewModels\MusicSheetsListAllModelView.cs" />
@@ -480,6 +483,8 @@
     <Content Include="imgs\notes-from-angle.jpg" />
     <Content Include="imgs\notes-in-black-and-white.jpg" />
     <Content Include="imgs\pencil-and-notes.jpg" />
+    <Content Include="imgs\piano-keys-and-notes.jpg" />
+    <Content Include="imgs\piano-keys.jpg" />
     <Content Include="Views\Shared\_NoItemsFound.cshtml" />
     <Content Include="Areas\MusicSheets\Views\Sheets\All.cshtml" />
     <Content Include="Areas\MusicSheets\Views\Shared\_UploadMusicSheet.cshtml" />
@@ -488,6 +493,9 @@
     <Content Include="Areas\MusicSheets\Views\Shared\_ListCategories.cshtml" />
     <Content Include="Areas\MusicSheets\Views\Artists\All.cshtml" />
     <Content Include="Areas\MusicSheets\Views\Artists\Details.cshtml" />
+    <Content Include="Areas\MusicSheets\Views\Categories\All.cshtml" />
+    <Content Include="Areas\MusicSheets\Views\Categories\Details.cshtml" />
+    <Content Include="Areas\MusicSheets\Views\Shared\_ListMusicSheets.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="imgs\favicons\notes.ico" />
     <Content Include="imgs\favicons\piano.ico" />
@@ -556,6 +564,7 @@
     <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Notes.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\CategoryCheckBox.cshtml" />
+    <Content Include="Views\Shared\_PlayThePiano.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

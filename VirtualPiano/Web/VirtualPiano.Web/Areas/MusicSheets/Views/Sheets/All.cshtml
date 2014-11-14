@@ -29,10 +29,10 @@ else
                     <h2 class="sheet-heading"><small>TITLE:</small> @Html.ActionLink(@sheet.Title, "Details", "Sheets", new { id = @sheet.Id }, null)</h2>
                 </div>
                 <div class="row">
-                    <small>ARTIST:</small> <a href="#" class="sheet-info">@sheet.ArtistName</a>
+                    <small>ARTIST: </small>@Html.ActionLink(sheet.ArtistName, "Details", "Artists", new { id = @sheet.Id }, new { @class = "sheet-info" })
                 </div>
                 <div class="row">
-                    <small>CATEGORY:</small> <a href="#" class="sheet-info">@sheet.CategoryName</a>
+                    <small>GENRE: </small>@Html.ActionLink(sheet.CategoryName, "Details", "Categories", new { id = @sheet.Id }, new { @class = "sheet-info" })
                 </div>
             </div>
         </div>

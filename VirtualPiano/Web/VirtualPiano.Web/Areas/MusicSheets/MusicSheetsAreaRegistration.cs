@@ -2,17 +2,17 @@
 
 namespace VirtualPiano.Web.Areas.MusicSheets
 {
-    public class MusicSheetsAreaRegistration : AreaRegistration 
+    public class MusicSheetsAreaRegistration : AreaRegistration
     {
-        public override string AreaName 
+        public override string AreaName
         {
-            get 
+            get
             {
                 return "MusicSheets";
             }
         }
 
-        public override void RegisterArea(AreaRegistrationContext context) 
+        public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
                 "MusicSheets_default",

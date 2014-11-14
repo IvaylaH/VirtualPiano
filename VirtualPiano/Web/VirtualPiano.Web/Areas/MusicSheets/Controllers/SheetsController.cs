@@ -52,7 +52,7 @@
                 return View(inputModel);
             }
 
-            var category =  this.Data.MusicSheetsCategories.All().Where(c => c.Name == selectedCategoryName).FirstOrDefault();
+            var category = this.Data.MusicSheetsCategories.All().Where(c => c.Name == selectedCategoryName).FirstOrDefault();
 
             var musicSheetId = 0;
             if (this.Data.Artists.All().Any(a => a.Name == inputModel.Artist))
@@ -104,6 +104,7 @@
             return View(model);
         }
 
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -113,16 +114,7 @@
 
             var musicSheet = this.Data.MusicSheets.GetById(id);
 
-            Mapper.CreateMap<MusicSheet, MusicSheetDetailsViewModel>()
-                .ForMember(dest => dest.Artist, opt => opt.MapFrom(sheet => new MusicSheetsArtistViewModel()
-                    {
-                        Id = sheet.Artist.Id,
-                        Name = sheet.Artist.Name
-                    }))
-                .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.Name))
-                .ForMember(dest => dest.Notes, opt => opt.MapFrom(src => src.Notes.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries)));
-
-            var mappedMusicSheet = Mapper.Map<MusicSheet, MusicSheetDetailsViewModel>(musicSheet);
+            var mappedMusicSheet = this.MusicSheetCustomMapping(musicSheet);
 
             if (mappedMusicSheet == null)
             {
@@ -130,6 +122,26 @@
             }
 
             return View(mappedMusicSheet);
+        }
+
+        private object MusicSheetCustomMapping(MusicSheet musicSheet)
+        {
+            Mapper.CreateMap<MusicSheet, MusicSheetDetailsViewModel>()
+                .ForMember(dest => dest.Artist, opt => opt.MapFrom(sheet => new MusicSheetsArtistViewModel()
+                {
+                    Id = sheet.Artist.Id,
+                    Name = sheet.Artist.Name
+                }))
+                .ForMember(dest => dest.Category, opt => opt.MapFrom(sheet => new MusicSheetsCategoryViewModel()
+                {
+                    Id = sheet.Category.Id,
+                    Name = sheet.Category.Name
+                }))
+                .ForMember(dest => dest.Notes, opt => opt.MapFrom(sheet => sheet.Notes.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries)));
+
+            var mappedMusicSheet = Mapper.Map<MusicSheet, MusicSheetDetailsViewModel>(musicSheet);
+
+            return mappedMusicSheet;
         }
 
         private IQueryable<MusicSheet> SortByTitleAscending(IQueryable<MusicSheet> musicSheets)

@@ -8,7 +8,7 @@
     using VirtualPiano.Models;
     using VirtualPiano.Web.Infrastructure.Mapping;
 
-    public class ArtistsCollectionOfSheetViewModel : IMapFrom<MusicSheet>
+    public class CollectionOfSheetViewModel : IMapFrom<MusicSheet>
     {
         public int Id { get; set; }
 

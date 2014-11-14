@@ -4,33 +4,24 @@
     using System.Linq;
 
     using AutoMapper;
+    using AutoMapper.QueryableExtensions;
 
     using VirtualPiano.Models;
     using VirtualPiano.Web.Infrastructure.Mapping;
 
-    public class AllArtistsViewModel : IMapFrom<Artist>, IHaveCustomMappings
+    public class CategoriesViewModel : IMapFrom<MusicSheetsCategory>, IHaveCustomMappings
     {
-        private IEnumerable<CollectionOfSheetViewModel> musicSheets;
-
-        public AllArtistsViewModel()
-        {
-            this.musicSheets = new HashSet<CollectionOfSheetViewModel>();
-        }
-
         public int Id { get; set; }
 
         public string Name { get; set; }
 
-        public IEnumerable<CollectionOfSheetViewModel> MusicSheets
-        {
-            get { return this.musicSheets; }
-            set { this.musicSheets = value; }
-        }
+        public IEnumerable<CollectionOfSheetViewModel> MusicSheets { get; set; }
 
         public void CreateMappings(IConfiguration configuration)
         {
-            configuration.CreateMap<Artist, AllArtistsViewModel>()
-                .ForMember(dest => dest.MusicSheets, opt => opt.MapFrom(artist => artist.MusicSheets.AsQueryable()
+            configuration.CreateMap<MusicSheetsCategory, CategoriesViewModel>()
+                .ForMember(dest => dest.MusicSheets, opt => opt.MapFrom(category => category.MusicSheets
+                    .AsQueryable()
                     .OrderBy(sheet => sheet.Title)
                     .Select(sheets => new CollectionOfSheetViewModel()
                     {

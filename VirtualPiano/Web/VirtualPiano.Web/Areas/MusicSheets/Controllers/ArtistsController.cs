@@ -25,6 +25,7 @@
         {
         }
 
+        [Authorize]
         public ActionResult Details(int? id)
         {
             var artist = this.Data.Artists.All()

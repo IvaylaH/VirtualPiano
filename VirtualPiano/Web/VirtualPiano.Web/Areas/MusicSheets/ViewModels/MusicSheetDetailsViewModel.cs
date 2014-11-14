@@ -8,7 +8,7 @@
     using VirtualPiano.Models;
     using VirtualPiano.Web.Infrastructure.Mapping;
 
-    public class MusicSheetDetailsViewModel : IMapFrom<MusicSheet>, IHaveCustomMappings
+    public class MusicSheetDetailsViewModel : IMapFrom<MusicSheet>
     {
         public int Id { get; set; }
 
@@ -18,5 +18,6 @@
 
         public MusicSheetsArtistViewModel Artist { get; set; }
 
-        public string CategoryName { get; set; }
+        public MusicSheetsCategoryViewModel Category { get; set; }
+    }
 }

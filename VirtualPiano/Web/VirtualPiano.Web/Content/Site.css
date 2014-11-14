@@ -71,3 +71,35 @@
 .songs-list > li {
     padding-top: 5px;
 }
+
+ul.categories-list li {
+    width: 50%;
+    float: left;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    font-size: 14px;
+}
+
+/* Clear Fix */
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+.piano-img-container {
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.piano-img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    max-height: 200px;
+    max-width: 600px;
+}

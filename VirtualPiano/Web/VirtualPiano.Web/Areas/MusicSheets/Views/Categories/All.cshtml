@@ -1,0 +1,26 @@
+﻿@using VirtualPiano.Web.Areas.MusicSheets.ViewModels
+@model IEnumerable<CategoriesViewModel>
+@{
+    ViewBag.Title = "Genres List";
+}
+
+<div class="page-header">
+    <h2>@ViewBag.Title</h2>
+</div>
+
+<div class="jumbotron">
+    @*@Html.Partial("_PlayThePiano*@
+    <ul class="categories-list clearfix">
+        @foreach (var category in Model)
+        {
+            <li>
+                <h3 class="h3">
+                    <small>
+                        @Html.ActionLink(category.Name.ToUpperInvariant(), "Details", "Categories", new { id = category.Id }, null )
+                    </small>
+                </h3>
+            </li>
+        }
+    </ul>
+</div>
+
