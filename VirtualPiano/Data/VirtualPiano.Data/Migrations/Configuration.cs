@@ -257,7 +257,7 @@ namespace VirtualPiano.Data.Migrations
                 {
                     Title = "Hey Jude",
                     ArtistId = 1,
-                    Notes = string.Format("{0} /r {1} /r {2} /r {3} /r {4} /r {5} /r {6} /r {7} /r {8} /r {9} /r {10}", 
+                    Notes = string.Format("{0} \r\n {1} \r\n {2} \r\n {3} \r\n {4} \r\n {5} \r\n {6} \r\n {7} \r\n {8} \r\n {9} \r\n {10}", 
                     "sp psdo opPggfsdsPp sdd dhgfgds iopds dsPuui", 
                     "sp psdo opPggfsdsPp sdd dhgfgds iopds dsPuui", 
                     "igddssPd gdgP gdsPs dsPpoi", 
@@ -276,7 +276,7 @@ namespace VirtualPiano.Data.Migrations
                 {
                     Title = "Yesterday",
                     ArtistId = 1,
-                    Notes = string.Format("{0} /r {1} /r {2} /r {3} /r {4} /r {5} /r {6} /r {7} /r {8}", 
+                    Notes = string.Format("{0} \r\n {1} \r\n {2} \r\n {3} \r\n {4} \r\n {5} \r\n {6} \r\n {7} \r\n {8}", 
                         "oii paSdfgf dd ddsPpoP pp oipoyi pp",
                         "oii paSdfgf dd ddsPpoP pp oipoyi pp",
                         "p p dfgfd fdsd p",
@@ -293,7 +293,7 @@ namespace VirtualPiano.Data.Migrations
                 {
                     Title = "All Of Me",
                     ArtistId = 2,
-                    Notes = string.Format("{0} /r {1} /r {2} /r {3} /r {4}", 
+                    Notes = string.Format("{0} \r\n {1} \r\n {2} \r\n {3} \r\n {4}", 
                         "s -s -s S -S -S s -s -s P -P -P i P-s-s s-s-s s O O P-s-s s-P-s s-P-O-O-i s-s S s-O S s-O O-P",
                         "s-P i s-s-s s-P-s s-P-O-O s-s-s D-S-s s-P-O-O-i s-s S s-O O-S S s-O O-P s-P S s P-g",
                         "D S s s s-P-O-O o o-i-Y-Y i g g-D-D-S-s s-P-P-O-P s-D s-g s P O-s s-s P P P O-P-i s-s",

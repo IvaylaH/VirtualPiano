@@ -27,7 +27,7 @@ else
             </div>
             <div class="col-md-10">
                 <div class="row">
-                    <h2 class="sheet-heading"><small>TITLE:</small> @Html.ActionLink(openning.Title, "", "Opennings", new { id = @openning.Id }, null)</h2>
+                    <h2 class="sheet-heading"><small>TITLE:</small> @Html.ActionLink(openning.Title, "Details", "Opennings", new { id = @openning.Id }, null)</h2>
                 </div>
                 <div class="row">
                     <small>AUTHOR: </small>@Html.ActionLink(openning.AuthorName, "", "", new { id = @openning.Id }, new { @class = "sheet-info" })
@@ -42,13 +42,13 @@ else
         </div>
         <hr />
     }
-}
-
-@if (Model.PagesCount != 0)
-{
-    <div class="col-md-9">
-        @Html.Partial("_Paging", @Model, ViewData)
-    </div>
+    
+    if (Model.PagesCount != 0)
+    {
+        <div class="col-md-9">
+            @Html.Partial("_Paging", @Model, ViewData)
+        </div>
+    }
 }
 
 

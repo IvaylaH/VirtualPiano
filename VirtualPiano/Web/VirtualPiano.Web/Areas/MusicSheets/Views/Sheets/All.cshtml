@@ -38,12 +38,12 @@ else
         </div>
         <hr />
     }
-}
-
-@if (Model.PagesCount != 0)
-{
-    <div class="col-md-9">
-        @Html.Partial("_Paging", @Model, ViewData)
-    </div>
+    
+    if (Model.PagesCount != 0)
+    {
+        <div class="col-md-9">
+            @Html.Partial("_Paging", @Model, ViewData)
+        </div>
+    }
 }
 

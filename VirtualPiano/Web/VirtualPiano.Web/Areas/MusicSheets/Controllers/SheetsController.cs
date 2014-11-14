@@ -135,7 +135,7 @@ using VirtualPiano.Common;
                     Id = sheet.Category.Id,
                     Name = sheet.Category.Name
                 }))
-                .ForMember(dest => dest.Notes, opt => opt.MapFrom(sheet => sheet.Notes.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries)));
+                .ForMember(dest => dest.Notes, opt => opt.MapFrom(sheet => sheet.Notes.Split(new string[] { "\r\n", "/r" }, StringSplitOptions.RemoveEmptyEntries)));
 
             var mappedMusicSheet = Mapper.Map<MusicSheet, MusicSheetDetailsViewModel>(musicSheet);
 

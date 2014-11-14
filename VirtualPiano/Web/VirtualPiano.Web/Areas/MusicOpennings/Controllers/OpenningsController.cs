@@ -48,6 +48,21 @@
             return View(adsPage);
         }
 
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return this.RedirectToAction("All");
+            }
+
+            var openning = this.Data.MusicAds.All()
+                .Project()
+                .To<AdDetailsViewModel>()
+                .FirstOrDefault(ad => ad.Id == id);
+
+            return View(openning);
+        }
+
         private IQueryable<MusicAd> SortMusicAds(string sortBy, IQueryable<MusicAd> musicAds)
         {
             var sortParam = sortBy == null ? "" : sortBy;

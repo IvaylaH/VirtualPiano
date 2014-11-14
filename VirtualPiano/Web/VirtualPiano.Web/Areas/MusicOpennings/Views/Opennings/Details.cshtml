@@ -1,0 +1,29 @@
+﻿@using VirtualPiano.Web.Areas.MusicOpennings.ViewModels
+@model AdDetailsViewModel
+@{
+    ViewBag.Title = "Music Openning Details";
+}
+
+<div class="page-header">
+    <h3>Music Opening <small>DETAILS</small></h3>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2 class="h2">@Model.Title <small><span class="posted-by">posted by</span>@Html.ActionLink(@Model.Author.Username.ToUpperInvariant(), "", "", new { id = Model.Author.Id }, new { @class = "user-details-link" })</small></h2>
+    </div>
+    <div class="panel-body">
+        <div class="col-md-7">
+            <p>@Model.Content</p>
+            <br />
+            <br />
+        </div>
+        <div class="col-md-5">
+            <img src="@Url.Content("~/imgs/art-musician.jpg")" alt="musicians" class="img-rounded pull-right" />
+        </div>
+    </div>
+    <div class="panel-footer">
+        <h4 class="h4"><small>GENRE: </small>@Html.ActionLink(Model.Category.Name, "", "", new { id = Model.Category.Id }, null)</h4>
+    </div>
+</div>
+
