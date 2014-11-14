@@ -1,19 +1,19 @@
-﻿@using VirtualPiano.Web.Areas.MusicSheets.ViewModels
-@model CategoriesViewModel
+﻿@using VirtualPiano.Web.Areas.MusicOpennings.ViewModels;
+@model AllCategoriesViewModel
 @{
-    ViewBag.Title = "Genre Details";
+    ViewBag.Title = "Category Details";
 }
 
 <div class="page-header">
     <h2>@ViewBag.Title</h2>
 </div>
 
-@Html.Partial("_PlayThePiano")
+@Html.Partial("_AddMusiciansPic")
 
 <div class="jumbotron">
     <div class="row">
         <div class="col-md-6">
-            <h2><small>GENRE: </small>@Model.Name</h2>
+            <h2><small>CATEGORY: </small>@Model.Name</h2>
         </div>
         <div class="col-md-4 pull-right">
             <br />
@@ -30,13 +30,13 @@
 
     <br />
 
-    @if (Model.MusicSheets.Count() > 0)
+    @if (Model.Opennings.Count() > 0)
     {
-        Html.RenderPartial("_ListMusicSheets", Model.MusicSheets);
+        Html.RenderPartial("_ListMusicAds", Model.Opennings);
     }
     else
     {
-        Html.RenderPartial("_NoItemsFound", "music sheets");
+        Html.RenderPartial("_NoItemsFound", "music openings");
     }
 </div>
 

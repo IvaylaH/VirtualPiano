@@ -208,12 +208,15 @@
     <Compile Include="App_Start\ViewEnginesConfiguration.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\HomeController.cs" />
+    <Compile Include="Areas\MusicOpennings\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\MusicOpennings\Controllers\OpenningsController.cs" />
     <Compile Include="Areas\MusicOpennings\MusicOpenningsAreaRegistration.cs" />
     <Compile Include="Areas\MusicOpennings\ViewModels\AdDetailsViewModel.cs" />
     <Compile Include="Areas\MusicOpennings\ViewModels\AllAdsViewModel.cs" />
     <Compile Include="Areas\MusicOpennings\ViewModels\AllAdsPageViewModel.cs" />
+    <Compile Include="Areas\MusicOpennings\ViewModels\AllCategoriesViewModel.cs" />
     <Compile Include="Areas\MusicOpennings\ViewModels\OpenningAuthorVIewModel.cs" />
+    <Compile Include="Areas\MusicOpennings\ViewModels\OpenningBasicInfoViewModel.cs" />
     <Compile Include="Areas\MusicOpennings\ViewModels\OpenningCategoryViewModel.cs" />
     <Compile Include="Areas\MusicSheets\Controllers\ArtistsController.cs" />
     <Compile Include="Areas\MusicSheets\Controllers\CategoriesController.cs" />
@@ -487,6 +490,7 @@
     <Content Include="Areas\MusicSheets\Views\Sheets\Details.cshtml" />
     <Content Include="imgs\art-music-sheet.jpg" />
     <Content Include="imgs\art-musician.jpg" />
+    <Content Include="imgs\blue-musicians.jpg" />
     <Content Include="imgs\mic-green-bg.jpg" />
     <Content Include="imgs\music-notes-up-close.jpg" />
     <Content Include="imgs\notes-from-angle.jpg" />
@@ -508,6 +512,9 @@
     <Content Include="Areas\MusicOpennings\Views\Opennings\All.cshtml" />
     <Content Include="Areas\MusicOpennings\Views\Shared\_SortFilterOpennings.cshtml" />
     <Content Include="Areas\MusicOpennings\Views\Opennings\Details.cshtml" />
+    <Content Include="Areas\MusicOpennings\Views\Categories\All.cshtml" />
+    <Content Include="Areas\MusicOpennings\Views\Categories\Details.cshtml" />
+    <Content Include="Areas\MusicOpennings\Views\Shared\_ListMusicAds.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="imgs\favicons\notes.ico" />
     <Content Include="imgs\favicons\piano.ico" />
@@ -578,6 +585,7 @@
     <Content Include="Views\Shared\EditorTemplates\CategoryCheckBox.cshtml" />
     <Content Include="Views\Shared\_PlayThePiano.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\_AddMusiciansPic.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

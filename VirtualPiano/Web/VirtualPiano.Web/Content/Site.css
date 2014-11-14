@@ -51,7 +51,9 @@
     margin-top: 45px;
     margin-left: 40px;
     -ms-transform: rotate(-8deg); /* IE 9 */
-    -webkit-transform: rotate(-8deg); rotate(-deg); rotate(-deg); /* Chrome, Safari, Opera */
+    -webkit-transform: rotate(-8deg);
+    rotate(-deg);
+    rotate(-deg); /* Chrome, Safari, Opera */
     transform: rotate(-8deg);
 }
 
@@ -68,9 +70,9 @@
     list-style: none;
 }
 
-.songs-list > li {
-    padding-top: 5px;
-}
+    .songs-list > li {
+        padding-top: 5px;
+    }
 
 ul.categories-list li {
     width: 50%;
@@ -96,14 +98,21 @@ ul.categories-list li {
     margin-bottom: 15px;
 }
 
-.piano-img {
+.piano-img, .musicians-img {
     width: 100%;
     height: auto;
     border-radius: 10px;
-    max-height: 200px;
     max-width: 600px;
 }
 
 .posted-by {
     font-size: 15px !important;
+}
+
+.piano-img {
+    max-height: 200px;
+}
+
+.musicians-img {    
+    max-height: 250px;
 }

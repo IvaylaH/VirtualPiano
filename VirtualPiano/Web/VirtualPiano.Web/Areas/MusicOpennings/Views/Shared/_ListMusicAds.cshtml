@@ -1,0 +1,18 @@
+﻿@using VirtualPiano.Web.Areas.MusicOpennings.ViewModels
+@model IEnumerable<OpenningBasicInfoViewModel>
+
+<div class="panel-success">
+    <div class="panel-heading">
+        <h2 class="panel-title songs-title">Opennigs List</h2>
+    </div>
+    <div class="panel-body">
+        <ul class="songs-list">
+            @foreach (var opening in Model)
+            {
+                <li>
+                    <h4>@Html.ActionLink(opening.Title, "Details", "Opennings", new { id = opening.Id }, null)</h4>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

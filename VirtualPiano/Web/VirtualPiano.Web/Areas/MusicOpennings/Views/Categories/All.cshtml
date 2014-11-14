@@ -1,0 +1,33 @@
+﻿@using VirtualPiano.Web.Areas.MusicOpennings.ViewModels;
+@model IEnumerable<OpenningCategoryViewModel>
+@{
+    ViewBag.Title = "All Categories";
+}
+
+<div class="page-header">
+    <h2>@ViewBag.Title</h2>
+</div>
+
+@if (@Model == null)
+{
+    @Html.Partial("_NoItemsFound", "categories")
+}
+else
+{
+    <div class="jumbotron">
+        <ul class="categories-list clearfix">
+            @foreach (var category in Model)
+            {
+                <li>
+                    <h3 class="h3">
+                        <small>
+                            @Html.ActionLink(category.Name.ToUpperInvariant(), "Details", "Categories", new { id = category.Id }, null)
+                        </small>
+                    </h3>
+                </li>
+            }
+        </ul>
+    </div>
+}
+
+

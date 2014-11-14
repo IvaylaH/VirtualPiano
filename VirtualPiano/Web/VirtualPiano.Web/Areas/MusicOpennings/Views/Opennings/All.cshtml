@@ -33,7 +33,7 @@ else
                     <small>AUTHOR: </small>@Html.ActionLink(openning.AuthorName, "", "", new { id = @openning.Id }, new { @class = "sheet-info" })
                 </div>
                 <div class="row">
-                    <small>CATEGORY: </small>@Html.ActionLink(openning.CategoryName, "", "", new { id = @openning.Id }, new { @class = "sheet-info" })
+                    <small>CATEGORY: </small>@Html.ActionLink(openning.CategoryName, "Details", "Categories", new { id = @openning.Id }, new { @class = "sheet-info" })
                 </div>
                 <div class="row">
                     <small>ADDED ON: </small><b>@Html.DisplayFor(m => openning.CreatedOn)</b>
