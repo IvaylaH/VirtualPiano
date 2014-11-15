@@ -14,6 +14,7 @@
     using VirtualPiano.Web.Controllers;
     using VirtualPiano.Web.Areas.MusicOpennings.ViewModels;
 
+    [Authorize]
     public class AuthorsController : BaseController
     {
         public AuthorsController(IVirtualPianoData data)

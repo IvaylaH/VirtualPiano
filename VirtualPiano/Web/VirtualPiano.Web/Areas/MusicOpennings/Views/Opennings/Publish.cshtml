@@ -1,7 +1,7 @@
-﻿@using VirtualPiano.Web.Areas.MusicSheets.InputModels;
-@model InputMusicSheetViewModel
+﻿@using VirtualPiano.Web.Areas.MusicOpennings.InputViewModels;
+@model InputMusicOpenningViewModel
 @{
-    ViewBag.Title = "Upload music sheet";
+    ViewBag.Title = "Publish Openning";
 }
 
 <div class="page-header">
@@ -9,19 +9,19 @@
 </div>
 
 <div class="col-md-8">
-    @using (Html.BeginForm("Upload", "Sheets", FormMethod.Post, new { @class = "form-horizontal", encType = "multipart/form-data", name = "upload-form" }))
+    @using (Html.BeginForm("Publish", "Opennings", FormMethod.Post, new { @class = "form-horizontal", encType = "multipart/form-data", name = "upload-form" }))
     {
         @Html.AntiForgeryToken()
 
         @Html.ValidationSummary("", new { @class = "text-danger" })
-        
+
         if (ViewData["categoryError"] != null)
         {
             <span class="text-danger">@ViewData["categoryError"]</span>
-            <br/>
+            <br />
         }
 
-        @Html.EditorForModel("InputMusicSheetViewModel");
+        @Html.EditorForModel("InputMusicOpenningViewModel")
 
         <div class="form-group text-center">
             <input type="submit" value="Upload music sheet" class="btn btn-primary btn-md" />
@@ -33,4 +33,3 @@
         <img class="img" alt="notes from up close" src="~/imgs/music-notes-up-close.jpg" />
     </div>
 </div>
-

@@ -8,10 +8,12 @@
 
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
+    using Microsoft.AspNet.Identity;
 
     using VirtualPiano.Common;
     using VirtualPiano.Data;
     using VirtualPiano.Models;
+    using VirtualPiano.Web.Areas.MusicOpennings.InputViewModels;
     using VirtualPiano.Web.Areas.MusicOpennings.ViewModels;
     using VirtualPiano.Web.Controllers;
 
@@ -20,6 +22,64 @@
         public OpenningsController(IVirtualPianoData data)
             : base(data)
         {
+        }
+
+        [Authorize]
+        [HttpGet]
+        public ActionResult Publish()
+        {
+            var categories = this.Data.AdCategories.All().ToList();
+            ViewData["categories"] = categories;
+
+            var model = new InputMusicOpenningViewModel();
+            return View(model);
+        }
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Publish(InputMusicOpenningViewModel inputModel)
+        {
+            var categories = this.Data.MusicSheetsCategories.All().ToList();
+            ViewData["categories"] = categories;
+
+            var selectedCategoryName = this.Request.Params["listCategories"];
+            ViewData["categoryError"] = selectedCategoryName == "Select Category" ? "* Category is a required field." : null;
+
+            if (selectedCategoryName == "Select Category" || !ModelState.IsValid)
+            {
+                return View(inputModel);
+            }
+
+            var category = this.Data.AdCategories.All().FirstOrDefault(c => c.Name == selectedCategoryName);
+
+            var authorId = this.User.Identity.GetUserId();
+            var author = this.Data.Users.GetById(authorId);
+
+            var musicAdId = this.CreateMusicAd(author, category, inputModel);
+
+            return this.RedirectToAction("Details", new { id = musicAdId });
+        }
+
+        private int CreateMusicAd(ApplicationUser author, AdCategory category, InputMusicOpenningViewModel inputModel)
+        {
+            var musicAd = new MusicAd()
+            {
+                Title = inputModel.Title,
+                Content = inputModel.Content,
+                CategoryId = category.Id,
+                AuthorId = author.Id,
+                CreatedOn = DateTime.Now,
+                // TODO: To be set to Pending, when the administration is completed
+                Status = RequestStatus.Approved
+            };
+
+            author.Ads.Add(musicAd);
+            category.MusicAds.Add(musicAd);
+            this.Data.MusicAds.Add(musicAd);
+            this.Data.SaveChanges();
+
+            return musicAd.Id;
         }
 
         public ActionResult All(string sortBy, int page = GlobalConstants.DefaultPageForViews, int perPage = GlobalConstants.DefaultItemsPerPageForCustomViews)

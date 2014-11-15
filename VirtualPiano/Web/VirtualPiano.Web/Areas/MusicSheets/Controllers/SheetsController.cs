@@ -35,8 +35,8 @@ using VirtualPiano.Common;
         }
 
         [Authorize]
-        [ValidateAntiForgeryToken]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Upload(InputMusicSheetViewModel inputModel)
         {
             var categories = this.Data.MusicSheetsCategories.All().ToList();

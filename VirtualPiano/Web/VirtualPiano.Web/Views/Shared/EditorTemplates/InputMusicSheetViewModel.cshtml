@@ -1,0 +1,29 @@
+﻿@using VirtualPiano.Web.Areas.MusicSheets.InputModels;
+@model InputMusicSheetViewModel
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Title, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Title, new { placeholder = "Please enter title for the song..." })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Artist, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Artist, new { placeholder = "Please enter the name of the artist/composer..." })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Notes, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Notes, new { placeholder = "Music notes in Virtual Piano format e.g. fDfDfads or y y u y o I" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Category, new { @class = "col-md-2 control-label" })
+    @Html.Partial("_ListCategories", ViewData["categories"])
+</div>
+

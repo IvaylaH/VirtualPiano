@@ -15,6 +15,7 @@
         public string Title { get; set; }
 
         [Required]
+        [StringLength(maximumLength: 1000, MinimumLength = 30)]
         public string Content { get; set; }
 
         [Required]

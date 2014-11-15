@@ -1,0 +1,22 @@
+﻿@using VirtualPiano.Web.Areas.MusicOpennings.InputViewModels;
+@model InputMusicOpenningViewModel
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Title, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Title, new { placeholder = "Please enter title for the openning..." })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Content, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Content, new { placeholder = "Max number of symbols for the content -> 1000" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Category, new { @class = "col-md-2 control-label" })
+    @Html.Partial("_ListCategories", ViewData["categories"])
+</div>
+
