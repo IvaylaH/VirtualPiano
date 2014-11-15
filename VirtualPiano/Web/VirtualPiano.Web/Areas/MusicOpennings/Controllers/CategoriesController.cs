@@ -31,6 +31,7 @@
             return View(categories);
         }
 
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)

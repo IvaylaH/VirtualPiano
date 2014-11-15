@@ -48,6 +48,7 @@
             return View(adsPage);
         }
 
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -59,6 +60,11 @@
                 .Project()
                 .To<AdDetailsViewModel>()
                 .FirstOrDefault(ad => ad.Id == id);
+
+            if (openning == null)
+            {
+                return this.HttpNotFound("The openning was not found");
+            }
 
             return View(openning);
         }

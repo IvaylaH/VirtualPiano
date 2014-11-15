@@ -1,0 +1,75 @@
+﻿@using VirtualPiano.Web.Areas.MusicOpennings.ViewModels;
+@model AuthorDetailsViewModel
+@{
+    ViewBag.Title = "Author Opennings";
+}
+
+<div class="page-header">
+    <h2><small>MUSIC OPENNINGS <span class="posted-by">posted by </span></small>@Model.Username</h2>
+</div>
+
+<div class="jumbotron">
+    <div class="row">
+        <h3 class="h3">User <small>DETAILS</small></h3>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <h4><small>USERNAME:</small></h4>
+        </div>
+        <div class="col-md-5">
+            <h4 class="user-info">@Model.Username</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <h4><small>FULL NAME:</small></h4>
+        </div>
+        <div class="col-md-5">
+            <h4 class="user-info">@Model.FullName</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <h4><small>JOINED ON:</small></h4>
+        </div>
+        <div class="col-md-5">
+            <h4 class="user-info">@Html.DisplayFor(m => Model.CreatedOn)</h4>
+        </div>
+    </div>
+    <br />
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h2 class="panel-title songs-title">Music Opennings</h2>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-10">
+                <div class="col-md-8">
+                    @Html.ActionLink("Sort by Title", "AuthorOpennings", "Authors", new { sortBy = ViewBag.TitleSortParam, id = ViewData["guid"] }, new { @class = "btn btn-md btn-default" })
+                    @Html.ActionLink("Sort by Date", "AuthorOpennings", "Authors", new { sortBy = ViewBag.DateSortParam, id = ViewData["guid"] }, new { @class = "btn btn-md btn-default" })
+                </div>
+                <br />
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <ul class="songs-list">
+                @foreach (var ad in Model.Ads)
+                {
+                    <li>
+                        <h4>@Html.ActionLink(ad.Title, "Details", "Opennings", new { id = ad.Id }, null)</h4>
+                    </li>
+                }
+            </ul>
+        </div>
+        <div class="panel-footer">
+            @if (Model.Ads.Count() > 0)
+            {
+                @Html.Partial("_Paging", @Model, ViewData)
+            }
+        </div>
+    </div>
+</div>
+
+
+

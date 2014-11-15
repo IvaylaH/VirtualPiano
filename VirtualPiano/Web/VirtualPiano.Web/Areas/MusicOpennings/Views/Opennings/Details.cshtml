@@ -10,7 +10,7 @@
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h2 class="h2">@Model.Title <small><span class="posted-by">posted by</span>@Html.ActionLink(@Model.Author.Username.ToUpperInvariant(), "", "", new { id = Model.Author.Id }, new { @class = "user-details-link" })</small></h2>
+        <h2 class="h2">@Model.Title <small><span class="posted-by">posted by</span>@Html.ActionLink(@Model.Author.Username.ToUpperInvariant(), "AuthorOpennings", "Authors", new { id = Model.Author.Id }, new { @class = "user-details-link" })</small></h2>
     </div>
     <div class="panel-body">
         <div class="col-md-7">
