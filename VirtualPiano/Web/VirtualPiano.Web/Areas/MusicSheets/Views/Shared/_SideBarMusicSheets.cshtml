@@ -12,8 +12,8 @@
                         <img class="thumb-img" alt="thumbnail music sheet" src="@Url.Content("~/imgs/art-music-sheet.jpg")" />
                     </div>
                     <div class="col-md-9">
-                        <h4>
-                            <a href=@string.Format("Details/{0}", sheet.Id)><small>@sheet.Title.ToUpperInvariant()</small></a>
+                        @* TODO: Add JS to fix the problem with redirect to sheets details *@
+                        <h4><a href=@string.Format("Details/{0}", sheet.Id)><small>@sheet.Title.ToUpperInvariant()</small></a>
                         </h4>
                     </div>
                 </div>

@@ -21,7 +21,8 @@
                 }
                 <br />
                 <br />
-                <a href="#" class="btn btn-sm btn-default">Click to play...</a>
+                @Html.ActionLink("Click to play...", "Index", "Piano", new { Area = string.Empty }, new { @class = "btn btn-default" })
+                @*<a href="~/Areas/MusicSheets/Views/" class="btn btn-sm btn-default">Click to play...</a>*@
             </div>
             <div class="col-md-5">
                 <img src="@Url.Content("~/imgs/notes.png")" alt="music notes" class="img-rounded img-responsive notes" />

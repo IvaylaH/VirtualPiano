@@ -244,6 +244,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PianoController.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -252,6 +253,8 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\Home\HomePageInfo.cs" />
+    <Compile Include="ViewModels\Home\UserBasicInfoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -601,6 +604,7 @@
     <Content Include="Views\Shared\EditorTemplates\InputMusicOpenningViewModel.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\InputMusicSheetViewModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MusicSheetsCategory.cshtml" />
+    <Content Include="Views\Piano\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -610,7 +614,6 @@
     <Folder Include="Areas\MusicSheets\Models\" />
     <Folder Include="Areas\MusicSheets\Views\Base\" />
     <Folder Include="Areas\MusicSheets\Views\SideBar\" />
-    <Folder Include="ViewModels\Home\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>

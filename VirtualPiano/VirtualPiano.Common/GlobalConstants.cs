@@ -11,5 +11,7 @@
         public const int DefaultItemsPerPageForCustomViews = 5;
 
         public const int DefaultNumberOfMostRecentMusicItems = 5;
+
+        public const int HomePageNumberOfMostRecentMusicItems = 10;
     }
 }
