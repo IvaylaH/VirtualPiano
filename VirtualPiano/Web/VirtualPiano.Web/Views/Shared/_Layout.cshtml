@@ -37,6 +37,18 @@
                             }
                         </ul>
                     </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Music Sheets<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("All Music Opennings", "All", "Opennings", new { Area = "MusicOpennings" }, null)</li>
+                            <li>@Html.ActionLink("All Categories", "All", "Categories", new { Area = "MusicOpennings" }, null)</li>
+                            @if (Request.IsAuthenticated)
+                            {
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Publish Openning", "Publish", "Opennings", new { Area = "MusicOpennings" }, null)</li>
+                            }
+                        </ul>
+                    </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -45,15 +57,8 @@
     <div class="container body-content">
         @RenderBody()
     </div>
-    <div class="row">
-        <hr />
-        <footer>
-            <p class="text-center">&copy; @DateTime.Now.Year - Telerik Academy - ASP.MVC - Virtual Piano Project</p>
-        </footer>
-    </div>
-    @*<div class="container modal-footer">
-        @Html.Partial("_PageFooter")
-    </div>*@
+
+    @Html.Partial("_PageFooter")
 
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

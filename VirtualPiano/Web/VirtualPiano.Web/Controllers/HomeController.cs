@@ -26,6 +26,11 @@
             return View();
         }
 
+        public ActionResult Error()
+        {
+            return View();
+        }
+
         //public ActionResult MusicSheets()
         //{
         //    var musicSheets = this.musicSheetsRepo.All().Project().To<MusicSheetsViewModel>();

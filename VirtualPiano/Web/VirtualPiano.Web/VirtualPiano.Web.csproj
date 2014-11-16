@@ -211,6 +211,7 @@
     <Compile Include="Areas\MusicOpennings\Controllers\AuthorsController.cs" />
     <Compile Include="Areas\MusicOpennings\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\MusicOpennings\Controllers\OpenningsController.cs" />
+    <Compile Include="Areas\MusicOpennings\Controllers\SideBarController.cs" />
     <Compile Include="Areas\MusicOpennings\InputViewModels\InputMusicOpenningViewModel.cs" />
     <Compile Include="Areas\MusicOpennings\MusicOpenningsAreaRegistration.cs" />
     <Compile Include="Areas\MusicOpennings\ViewModels\AdDetailsViewModel.cs" />
@@ -222,10 +223,11 @@
     <Compile Include="Areas\MusicOpennings\ViewModels\OpenningAuthorVIewModel.cs" />
     <Compile Include="Areas\MusicOpennings\ViewModels\OpenningBasicInfoViewModel.cs" />
     <Compile Include="Areas\MusicOpennings\ViewModels\OpenningCategoryViewModel.cs" />
+    <Compile Include="Areas\MusicOpennings\ViewModels\SideBarViewModel.cs" />
     <Compile Include="Areas\MusicSheets\Controllers\ArtistsController.cs" />
     <Compile Include="Areas\MusicSheets\Controllers\CategoriesController.cs" />
-    <Compile Include="Areas\MusicSheets\Controllers\Common\BaseController.cs" />
     <Compile Include="Areas\MusicSheets\Controllers\SheetsController.cs" />
+    <Compile Include="Areas\MusicSheets\Controllers\SideBarController.cs" />
     <Compile Include="Areas\MusicSheets\InputModels\InputMusicSheetViewModel.cs" />
     <Compile Include="Areas\MusicSheets\MusicSheetsAreaRegistration.cs" />
     <Compile Include="Areas\MusicSheets\ViewModels\AllArtistsPageViewModel.cs" />
@@ -237,6 +239,7 @@
     <Compile Include="Areas\MusicSheets\ViewModels\MusicSheetsArtistViewModel.cs" />
     <Compile Include="Areas\MusicSheets\ViewModels\MusicSheetsListAllModelView.cs" />
     <Compile Include="Areas\MusicSheets\ViewModels\SheetsAllViewModel.cs" />
+    <Compile Include="Areas\MusicSheets\ViewModels\SideBarViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -495,6 +498,7 @@
     <Content Include="imgs\art-music-sheet.jpg" />
     <Content Include="imgs\art-musician.jpg" />
     <Content Include="imgs\blue-musicians.jpg" />
+    <Content Include="imgs\casting-call.png" />
     <Content Include="imgs\mic-green-bg.jpg" />
     <Content Include="imgs\music-notes-up-close.jpg" />
     <Content Include="imgs\notes-from-angle.jpg" />
@@ -522,6 +526,8 @@
     <Content Include="Areas\MusicOpennings\Views\Authors\AuthorOpennings.cshtml" />
     <Content Include="Areas\MusicOpennings\Views\Opennings\Publish.cshtml" />
     <Content Include="Areas\MusicOpennings\Views\Shared\_ListCategories.cshtml" />
+    <Content Include="Areas\MusicSheets\Views\Shared\_SideBarMusicSheets.cshtml" />
+    <Content Include="Areas\MusicOpennings\Views\Shared\_SideBarMusicAds.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="imgs\favicons\notes.ico" />
     <Content Include="imgs\favicons\piano.ico" />
@@ -600,8 +606,10 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Models\" />
     <Folder Include="Areas\MusicOpennings\Models\" />
+    <Folder Include="Areas\MusicOpennings\Views\SideBar\" />
     <Folder Include="Areas\MusicSheets\Models\" />
     <Folder Include="Areas\MusicSheets\Views\Base\" />
+    <Folder Include="Areas\MusicSheets\Views\SideBar\" />
     <Folder Include="ViewModels\Home\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>

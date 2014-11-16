@@ -1,12 +1,14 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    height: 100%;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    min-height: 650px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -113,6 +115,38 @@ ul.categories-list li {
     max-height: 200px;
 }
 
-.musicians-img {    
+.musicians-img {
     max-height: 250px;
+}
+
+.thumb-img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    max-width: 200px;
+    max-height: 280px;
+}
+
+.notes {
+    width: 100%;
+}
+
+.page-footer {
+    background-color: #000;
+    color: #ccc;
+    font-size: 16px;
+    clear: both;
+    position: relative;
+    z-index: 10;
+    height: 3em;
+    height: 250px;
+}
+
+.footer-links {
+    color: #ccc !important;
+}
+
+.footer-links:hover {
+    text-decoration: underline;
+    color: #98978b !important;
 }

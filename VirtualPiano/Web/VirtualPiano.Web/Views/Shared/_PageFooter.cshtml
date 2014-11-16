@@ -1,1 +1,56 @@
-﻿
+﻿<footer>
+    <div class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h2><small>MUSIC SHEETS</small></h2>
+                    <h4>
+                        <small>
+                            @Html.ActionLink("All Music Sheets".ToUpperInvariant(), "All", "Sheets", new { Area = "MusicSheets" }, new { @class = "footer-links" })
+                        </small>
+                    </h4>
+                    <h4>
+                        <small>
+                            @Html.ActionLink("All Artists".ToUpperInvariant(), "All", "Artists", new { Area = "MusicSheets" }, new { @class = "footer-links" })
+                        </small>
+                    </h4>
+                    <h4>
+                        <small>
+                            @Html.ActionLink("All Music Categories".ToUpperInvariant(), "All", "Categories", new { Area = "MusicSheets" }, new { @class = "footer-links" })
+                        </small>
+                    </h4>
+                </div>
+                <div class="col-md-4">
+                    <h2><small>MUSIC OPENNINGS</small></h2>
+                    <h4>
+                        <small>
+                            @Html.ActionLink("All Music Opennings".ToUpperInvariant(), "All", "Opennings", new { Area = "MusicOpennings" }, new { @class = "footer-links" })
+                        </small>
+                    </h4>
+                    <h4>
+                        <small>
+                            @Html.ActionLink("All Categories".ToUpperInvariant(), "All", "Categories", new { Area = "MusicOpennings" }, new { @class = "footer-links" })
+                        </small>
+                    </h4>
+                </div>
+                <div class="col-md-4">
+                    <h2><small>OUR TEACHERS</small></h2>
+                    <h4>
+                        <small>
+                            @Html.ActionLink("Find a Piano Teacher".ToUpperInvariant(), "", "", new { string.Empty }, new { @class = "footer-links" })
+                        </small>
+                    </h4>
+                    <h4>
+                        <small>
+                            @Html.ActionLink("Register As a Piano Teacher".ToUpperInvariant(), "", "", new { string.Empty }, new { @class = "footer-links" })
+                        </small>
+                    </h4>
+                </div>
+            </div>
+            <div class="row">
+                <hr />
+                <p class="text-center">&copy; @DateTime.Now.Year - Telerik Academy - ASP.MVC - Virtual Piano Project</p>
+            </div>
+        </div>
+    </div>
+</footer>

@@ -9,5 +9,7 @@
         public const int DefaultPageForViews = 1;
 
         public const int DefaultItemsPerPageForCustomViews = 5;
+
+        public const int DefaultNumberOfMostRecentMusicItems = 5;
     }
 }

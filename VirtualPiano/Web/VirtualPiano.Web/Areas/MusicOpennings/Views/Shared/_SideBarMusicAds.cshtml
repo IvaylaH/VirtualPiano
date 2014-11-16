@@ -1,0 +1,24 @@
+﻿<div class="panel panel-success">
+    <div class="panel-heading">
+        <h2 class="panel-title songs-title">MOST RECENT OPENNINGS</h2>
+    </div>
+    <div class="panel-body">
+        <div class="list-sheets">
+            @foreach (var openning in Model.MostRecentMusicAds)
+            {
+                <div class="row">
+                    <div class="col-md-3">
+                        <br />
+                        <img class="thumb-img" alt="thumbnail music sheet" src="@Url.Content("~/imgs/mic-green-bg.jpg")">
+                    </div>
+                    <div class="col-md-9">
+                        <h4>
+                            <a href=@string.Format("Details/{0}", openning.Id)><small>@openning.Title.ToUpperInvariant()</small></a>
+                        </h4>
+                    </div>
+                </div>
+                <br />
+            }
+        </div>
+    </div>
+</div>

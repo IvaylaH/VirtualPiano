@@ -8,25 +8,30 @@
     <h3>Music Sheet <small>DETAILS</small></h3>
 </div>
 
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h2 class="h2">@Model.Title <small>@Html.ActionLink(@Model.Artist.Name, "Details", "Artists", new { id = Model.Artist.Id }, null)</small></h2>
-    </div>
-    <div class="panel-body">
-        <div class="col-md-7">
-            @foreach (var line in @Model.Notes)
-            {
-                @line<br />
-            }
-            <br />
-            <br />
-            <a href="#" class="btn btn-sm btn-default">Click to play...</a>
+<div class="col-md-9">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="h2">@Model.Title <small>@Html.ActionLink(@Model.Artist.Name, "Details", "Artists", new { id = Model.Artist.Id }, null)</small></h2>
         </div>
-        <div class="col-md-5">
-            <img src="@Url.Content("~/imgs/notes.png")" alt="music notes" class="img-rounded" />
+        <div class="panel-body">
+            <div class="col-md-7">
+                @foreach (var line in @Model.Notes)
+                {
+                    @line<br />
+                }
+                <br />
+                <br />
+                <a href="#" class="btn btn-sm btn-default">Click to play...</a>
+            </div>
+            <div class="col-md-5">
+                <img src="@Url.Content("~/imgs/notes.png")" alt="music notes" class="img-rounded img-responsive notes" />
+            </div>
+        </div>
+        <div class="panel-footer">
+            <h4 class="h4"><small>GENRE: </small>@Html.ActionLink(Model.Category.Name, "Details", "Categories", new { id = Model.Category.Id }, null)</h4>
         </div>
     </div>
-    <div class="panel-footer">
-        <h4 class="h4"><small>GENRE: </small>@Html.ActionLink(Model.Category.Name, "Details", "Categories", new { id = Model.Category.Id }, null)</h4>
-    </div>
+</div>
+<div class="col-md-3">
+    @Html.Action("Index", "SideBar")
 </div>

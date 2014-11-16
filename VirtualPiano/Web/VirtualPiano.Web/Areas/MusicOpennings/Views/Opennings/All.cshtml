@@ -12,45 +12,50 @@
 
 <br />
 
-@if (@Model == null)
-{
-    @Html.Partial("_NoItemsFound", "opennings")
-}
-else
-{
-    foreach (var openning in Model.Opennings)
+<div class="col-md-9">
+    @if (@Model == null)
     {
-        <div class="row">
-            <div class="col-md-2">
-                <div class="thumbnail-container">
-                    <br />
-                    <img class="img" alt="music openning" src="@Url.Content("~/imgs/mic-green-bg.jpg")" />
+        @Html.Partial("_NoItemsFound", "opennings")
+    }
+    else
+    {
+        foreach (var openning in Model.Opennings)
+        {
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="thumbnail-container">
+                        <br />
+                        <img class="img" alt="music openning" src="@Url.Content("~/imgs/mic-green-bg.jpg")" />
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <div class="row">
+                        <h2 class="sheet-heading"><small>TITLE:</small> @Html.ActionLink(openning.Title, "Details", "Opennings", new { id = @openning.Id }, null)</h2>
+                    </div>
+                    <div class="row">
+                        <small>AUTHOR: </small>@Html.ActionLink(openning.AuthorName, "", "", new { id = @openning.Id }, new { @class = "sheet-info" })
+                    </div>
+                    <div class="row">
+                        <small>CATEGORY: </small>@Html.ActionLink(openning.CategoryName, "Details", "Categories", new { id = @openning.Id }, new { @class = "sheet-info" })
+                    </div>
+                    <div class="row">
+                        <small>PUBLISHED ON: </small><b>@Html.DisplayFor(m => openning.CreatedOn)</b>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-10">
-                <div class="row">
-                    <h2 class="sheet-heading"><small>TITLE:</small> @Html.ActionLink(openning.Title, "Details", "Opennings", new { id = @openning.Id }, null)</h2>
-                </div>
-                <div class="row">
-                    <small>AUTHOR: </small>@Html.ActionLink(openning.AuthorName, "", "", new { id = @openning.Id }, new { @class = "sheet-info" })
-                </div>
-                <div class="row">
-                    <small>CATEGORY: </small>@Html.ActionLink(openning.CategoryName, "Details", "Categories", new { id = @openning.Id }, new { @class = "sheet-info" })
-                </div>
-                <div class="row">
-                    <small>PUBLISHED ON: </small><b>@Html.DisplayFor(m => openning.CreatedOn)</b>
-                </div>
+            <hr />
+        }
+
+        if (Model.PagesCount != 0)
+        {
+            <div class="col-md-9">
+                @Html.Partial("_Paging", @Model, ViewData)
             </div>
-        </div>
-        <hr />
+        }
     }
-    
-    if (Model.PagesCount != 0)
-    {
-        <div class="col-md-9">
-            @Html.Partial("_Paging", @Model, ViewData)
-        </div>
-    }
-}
+</div>
+<div class="col-md-3">
+    @Html.Action("Index", "SideBar")
+</div>
 
 

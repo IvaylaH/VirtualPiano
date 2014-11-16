@@ -8,42 +8,47 @@
     <h2>@ViewBag.Title</h2>
 </div>
 
-@Html.Partial("_SortFilterSheets")
+<div class="col-md-9">
+    @Html.Partial("_SortFilterSheets")
 
-@if (@Model == null)
-{
-    @Html.Partial("_NoItemsFound", "music sheets")
-}
-else
-{
-    foreach (var sheet in Model.MusicSheets)
+    @if (@Model == null)
     {
-        <div class="row">
-            <div class="col-md-2">
-                <div class="thumbnail-container">
-                    <img class="img" alt="music sheet" src="@Url.Content("~/imgs/art-music-sheet.jpg")" />
+        @Html.Partial("_NoItemsFound", "music sheets")
+    }
+    else
+    {
+        foreach (var sheet in Model.MusicSheets)
+        {
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="thumbnail-container">
+                        <img class="img" alt="music sheet" src="@Url.Content("~/imgs/art-music-sheet.jpg")" />
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <div class="row">
+                        <h2 class="sheet-heading"><small>TITLE:</small> @Html.ActionLink(@sheet.Title, "Details", "Sheets", new { id = @sheet.Id }, null)</h2>
+                    </div>
+                    <div class="row">
+                        <small>ARTIST: </small>@Html.ActionLink(sheet.ArtistName, "Details", "Artists", new { id = @sheet.Id }, new { @class = "sheet-info" })
+                    </div>
+                    <div class="row">
+                        <small>GENRE: </small>@Html.ActionLink(sheet.CategoryName, "Details", "Categories", new { id = @sheet.Id }, new { @class = "sheet-info" })
+                    </div>
                 </div>
             </div>
-            <div class="col-md-10">
-                <div class="row">
-                    <h2 class="sheet-heading"><small>TITLE:</small> @Html.ActionLink(@sheet.Title, "Details", "Sheets", new { id = @sheet.Id }, null)</h2>
-                </div>
-                <div class="row">
-                    <small>ARTIST: </small>@Html.ActionLink(sheet.ArtistName, "Details", "Artists", new { id = @sheet.Id }, new { @class = "sheet-info" })
-                </div>
-                <div class="row">
-                    <small>GENRE: </small>@Html.ActionLink(sheet.CategoryName, "Details", "Categories", new { id = @sheet.Id }, new { @class = "sheet-info" })
-                </div>
+            <hr />
+        }
+
+        if (Model.PagesCount != 0)
+        {
+            <div class="col-md-9">
+                @Html.Partial("_Paging", @Model, ViewData)
             </div>
-        </div>
-        <hr />
+        }
     }
-    
-    if (Model.PagesCount != 0)
-    {
-        <div class="col-md-9">
-            @Html.Partial("_Paging", @Model, ViewData)
-        </div>
-    }
-}
+</div>
+<div class="col-md-3">
+    @Html.Action("Index", "SideBar")
+</div>
 

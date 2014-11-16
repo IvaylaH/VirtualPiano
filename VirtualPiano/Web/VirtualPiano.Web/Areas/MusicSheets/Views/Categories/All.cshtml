@@ -8,26 +8,30 @@
     <h2>@ViewBag.Title</h2>
 </div>
 
-@if (@Model == null)
-{
-    @Html.Partial("_NoItemsFound", "categories")
-}
-else
-{
-    <div class="jumbotron">
-        @*@Html.Partial("_PlayThePiano*@
-        <ul class="categories-list clearfix">
-            @foreach (var category in Model)
-            {
-                <li>
-                    <h3 class="h3">
-                        <small>
-                            @Html.ActionLink(category.Name.ToUpperInvariant(), "Details", "Categories", new { id = category.Id }, null)
-                        </small>
-                    </h3>
-                </li>
-            }
-        </ul>
-    </div>
-}
-
+<div class="col-md-9">
+    @if (@Model == null)
+    {
+        @Html.Partial("_NoItemsFound", "categories")
+    }
+    else
+    {
+        <div class="jumbotron">
+            @*@Html.Partial("_PlayThePiano*@
+            <ul class="categories-list clearfix">
+                @foreach (var category in Model)
+                {
+                    <li>
+                        <h3 class="h3">
+                            <small>
+                                @Html.ActionLink(category.Name.ToUpperInvariant(), "Details", "Categories", new { id = category.Id }, null)
+                            </small>
+                        </h3>
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+</div>
+<div class="col-md-3">
+    @Html.Action("Index", "SideBar")
+</div>
