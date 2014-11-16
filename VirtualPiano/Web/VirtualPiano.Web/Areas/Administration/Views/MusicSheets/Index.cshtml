@@ -1,0 +1,41 @@
+﻿@using VirtualPiano.Web.Areas.Administration.ViewModels.MusicSheets
+@{
+    ViewBag.Title = "Music Sheets";
+    const string ControllerName = "MusicSheets";
+}
+
+<div class="page-header">
+    <h2>@ViewBag.Title</h2>
+</div>
+
+@(Html.Kendo().Grid<MusicSheetsViewModel>()
+    .Name("music-sheets-grid")
+    .Columns(columns =>
+    {
+        columns.Bound(cols => cols.Id).Width(25);
+        columns.Bound(cols => cols.Title).Width(150);
+        columns.Bound(cols => cols.Notes).Width(350);
+        columns.Bound(cols => cols.ArtistName).Width(100);
+        columns.Bound(cols => cols.CategoryName).Width(100);
+        columns.Command(cols => cols.Edit()).Title("Edit Sheet").Width(55);
+        columns.Command(cols => cols.Destroy()).Title("Delete Sheet").Width(55);
+    })
+    .Sortable()
+    .Groupable()
+    .Editable(edit => edit.Mode(GridEditMode.PopUp))
+    .ToolBar(toolBar => toolBar.Create())
+    .Pageable(pageable => pageable
+        .Refresh(true)
+        .PageSizes(true)
+        .ButtonCount(5)
+    )
+    .DataSource(dataSource => dataSource.Ajax()
+        .Model(model => model.Id(sheet => sheet.Id))
+        .Read(read => read.Action("Read", ControllerName))
+        .Create(create => create.Action("Create", ControllerName))
+        .Update(update => update.Action("Update", ControllerName))
+        .Destroy(destroy => destroy.Action("Destroy", ControllerName))
+    )
+)
+<br />
+

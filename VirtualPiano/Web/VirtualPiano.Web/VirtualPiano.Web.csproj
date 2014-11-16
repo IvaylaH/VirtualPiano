@@ -207,7 +207,10 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\ViewEnginesConfiguration.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\Administration\Controllers\Base\AdminController.cs" />
     <Compile Include="Areas\Administration\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Administration\Controllers\MusicSheetsController.cs" />
+    <Compile Include="Areas\Administration\ViewModels\MusicSheets\MusicSheetsViewModel.cs" />
     <Compile Include="Areas\MusicOpennings\Controllers\AuthorsController.cs" />
     <Compile Include="Areas\MusicOpennings\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\MusicOpennings\Controllers\OpenningsController.cs" />
@@ -531,6 +534,19 @@
     <Content Include="Areas\MusicOpennings\Views\Shared\_ListCategories.cshtml" />
     <Content Include="Areas\MusicSheets\Views\Shared\_SideBarMusicSheets.cshtml" />
     <Content Include="Areas\MusicOpennings\Views\Shared\_SideBarMusicAds.cshtml" />
+    <Content Include="Areas\Administration\Views\MusicSheets\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\Currency.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\Date.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\Email.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\EmailAddress.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\GridForeignKey.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\Integer.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\Number.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\Password.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\String.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\Time.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\Url.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="imgs\favicons\notes.ico" />
     <Content Include="imgs\favicons\piano.ico" />
@@ -609,6 +625,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Models\" />
+    <Folder Include="Areas\Administration\Views\Admin\" />
     <Folder Include="Areas\MusicOpennings\Models\" />
     <Folder Include="Areas\MusicOpennings\Views\SideBar\" />
     <Folder Include="Areas\MusicSheets\Models\" />
