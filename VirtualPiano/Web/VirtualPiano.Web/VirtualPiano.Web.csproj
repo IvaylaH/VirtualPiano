@@ -214,11 +214,13 @@
     <Compile Include="Areas\Administration\Controllers\MusicOpenningsController.cs" />
     <Compile Include="Areas\Administration\Controllers\MusicSheetsController.cs" />
     <Compile Include="Areas\Administration\Controllers\OpenningsCategoriesController.cs" />
+    <Compile Include="Areas\Administration\Controllers\UsersController.cs" />
     <Compile Include="Areas\Administration\ViewModels\Artists\ArtistsViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\MusicCategories\MusicCategoriesViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\MusicOpennings\MusicAdsViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\MusicSheets\MusicSheetsViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\OpenningsCategories\OpenningCategoriesViewModel.cs" />
+    <Compile Include="Areas\Administration\ViewModels\Users\UsersViewModel.cs" />
     <Compile Include="Areas\MusicOpennings\Controllers\AuthorsController.cs" />
     <Compile Include="Areas\MusicOpennings\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\MusicOpennings\Controllers\OpenningsController.cs" />
@@ -559,6 +561,7 @@
     <Content Include="Areas\Administration\Views\Artists\Index.cshtml" />
     <Content Include="Areas\Administration\Views\MusicCategories\Index.cshtml" />
     <Content Include="Areas\Administration\Views\OpenningsCategories\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Users\Index.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="imgs\favicons\notes.ico" />
     <Content Include="imgs\favicons\piano.ico" />

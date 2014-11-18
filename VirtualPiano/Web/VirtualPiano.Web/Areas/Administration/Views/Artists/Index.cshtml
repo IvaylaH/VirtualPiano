@@ -12,7 +12,7 @@
     .Name("music-sheets-grid")
     .Columns(columns =>
     {
-        columns.Bound(cols => cols.Id).Width(25);
+        columns.Bound(cols => cols.Id).Width(25).Hidden(true);
         columns.Bound(cols => cols.Name).Width(200);
         columns.Bound(cols => cols.ModifiedOn).Format("{0:dddd, MMMM d, yyyy}").Locked(true).Width(75);
         columns.Bound(cols => cols.CreatedOn).Format("{0:dddd, MMMM d, yyyy}").Locked(true).Width(75);

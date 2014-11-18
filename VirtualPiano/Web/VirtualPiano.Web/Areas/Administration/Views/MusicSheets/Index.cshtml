@@ -12,7 +12,7 @@
     .Name("music-sheets-grid")
     .Columns(columns =>
     {
-        columns.Bound(cols => cols.Id).Width(25);
+        columns.Bound(cols => cols.Id).Width(25).Hidden(true);
         columns.Bound(cols => cols.Title).Width(150);
         columns.Bound(cols => cols.Notes).Width(350);
         columns.Bound(cols => cols.ArtistName).Width(100);

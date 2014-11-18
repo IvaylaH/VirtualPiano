@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.Linq;
     using System.Web;
 
@@ -23,6 +24,7 @@
 
         public string CategoryName { get; set; }
 
+        [DefaultValue("Anonymous")]
         public string AuthorName { get; set; }
 
         public void CreateMappings(IConfiguration configuration)
