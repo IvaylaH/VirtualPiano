@@ -1,0 +1,37 @@
+﻿@using VirtualPiano.Web.Areas.Administration.ViewModels.Artists
+@{
+    ViewBag.Title = "Artists";
+    const string ControllerName = "Artists";
+}
+
+<div class="page-header">
+    <h2>@ViewBag.Title</h2>
+</div>
+
+@(Html.Kendo().Grid<ArtistsViewModel>()
+    .Name("music-sheets-grid")
+    .Columns(columns =>
+    {
+        columns.Bound(cols => cols.Id).Width(25);
+        columns.Bound(cols => cols.Name).Width(200);
+        columns.Bound(cols => cols.CreatedOn).Format("{0:dddd, MMMM d, yyyy}").Locked(true).Width(75);
+        columns.Bound(cols => cols.ModifiedOn).Format("{0:dddd, MMMM d, yyyy}").Locked(true).Width(75);
+        columns.Command(cols => cols.Edit()).Title("Edit Artist").Width(30);
+    })
+    .Sortable()
+    .Groupable()
+    .Editable(edit => edit.Mode(GridEditMode.PopUp))
+    .ToolBar(toolBar => toolBar.Create())
+    .Pageable(pageable => pageable
+        .Refresh(true)
+        .PageSizes(true)
+        .ButtonCount(5)
+    )
+    .DataSource(dataSource => dataSource.Ajax()
+        .Model(model => model.Id(openning => openning.Id))
+        .Read(read => read.Action("Read", ControllerName))
+        .Create(create => create.Action("Create", ControllerName))
+        .Update(update => update.Action("Update", ControllerName))
+    )
+)
+<br />

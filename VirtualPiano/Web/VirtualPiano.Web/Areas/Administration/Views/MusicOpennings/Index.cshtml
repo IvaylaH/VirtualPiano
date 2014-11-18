@@ -21,8 +21,8 @@
         columns.Bound(cols => cols.IsDeleted).Locked(true);
         columns.Bound(cols => cols.DeletedOn).Format("{0:dddd, MMMM d, yyyy}").Hidden(true).Locked(true);
         columns.Bound(cols => cols.ModifiedOn).Format("{0:dddd, MMMM d, yyyy}").Hidden(true).Locked(true);
-        columns.Command(cols => cols.Edit()).Title("Edit Sheet").Width(55);
-        columns.Command(cols => cols.Destroy()).Title("Delete Sheet").Width(55);
+        columns.Command(cols => cols.Edit()).Title("Edit Openning").Width(55);
+        columns.Command(cols => cols.Destroy()).Title("Delete Openning").Width(55);
     })
     .Sortable()
     .Groupable()
@@ -34,7 +34,7 @@
         .ButtonCount(5)
     )
     .DataSource(dataSource => dataSource.Ajax()
-        .Model(model => model.Id(sheet => sheet.Id))
+        .Model(model => model.Id(ad => ad.Id))
         .Read(read => read.Action("Read", ControllerName))
         .Create(create => create.Action("Create", ControllerName))
         .Update(update => update.Action("Update", ControllerName))
