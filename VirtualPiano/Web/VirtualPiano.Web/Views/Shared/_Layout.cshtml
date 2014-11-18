@@ -49,6 +49,22 @@
                             }
                         </ul>
                     </li>
+                    @if (Request.IsAuthenticated && User.IsInRole(VirtualPiano.Common.GlobalConstants.AdministratorRoleName))
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administration<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Music Sheets", "Index", "MusicSheets", new { Area = "Administration" }, null)</li>
+                                <li>@Html.ActionLink("Music Opennings", "Index", "MusicOpennings", new { Area = "Administration" }, null)</li>
+                                <li>@Html.ActionLink("Opennings Categories", "Index", "OpenningsCategories", new { Area = "Administration" }, null)</li>
+                                <li>@Html.ActionLink("Music Genres", "Index", "MusicCategories", new { Area = "Administration" }, null)</li>
+                                <li>@Html.ActionLink("Artists", "Index", "Artists", new { Area = "Administration" }, null)</li>
+                                <li class="divider">
+                                </li>
+                                <li>@Html.ActionLink("Users", "Index", "Users", new { Area = "Administration" }, null)</li>
+                            </ul>
+                        </li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -64,4 +80,3 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
-
