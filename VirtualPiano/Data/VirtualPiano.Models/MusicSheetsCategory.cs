@@ -6,7 +6,7 @@
 
     using VirtualPiano.Data.Common.Models;
 
-    public class MusicSheetsCategory : DeletableEntity
+    public class MusicSheetsCategory : AuditInfo
     {
         private ICollection<MusicSheet> musicSheets;
 

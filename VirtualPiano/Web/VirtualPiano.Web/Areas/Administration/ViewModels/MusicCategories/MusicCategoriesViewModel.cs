@@ -1,18 +1,21 @@
-﻿namespace VirtualPiano.Web.Areas.Administration.ViewModels.Artists
+﻿namespace VirtualPiano.Web.Areas.Administration.ViewModels.MusicCategories
 {
     using System;
     using System.ComponentModel.DataAnnotations;
     using System.Web.Mvc;
 
+    using AutoMapper;
+    using AutoMapper.QueryableExtensions;
+
     using VirtualPiano.Models;
     using VirtualPiano.Web.Infrastructure.Mapping;
 
-    public class ArtistsViewModel : IMapFrom<Artist>
+    public class MusicCategoriesViewModel : IMapFrom<MusicSheetsCategory>
     {
         [HiddenInput(DisplayValue = false)]
         public int Id { get; set; }
 
-        [Display(Name = "Artist/Composer Name")]
+        [Display(Name = "Category Name")]
         [Required]
         public string Name { get; set; }
 

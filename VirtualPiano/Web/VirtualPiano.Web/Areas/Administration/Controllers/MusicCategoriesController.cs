@@ -16,11 +16,11 @@
     using VirtualPiano.Data;
     using VirtualPiano.Models;
     using VirtualPiano.Web.Areas.Administration.Controllers.Base;
-    using VirtualPiano.Web.Areas.Administration.ViewModels.Artists;
+    using VirtualPiano.Web.Areas.Administration.ViewModels.MusicCategories;
 
-    public class ArtistsController : AdminController
+    public class MusicCategoriesController : AdminController
     {
-        public ArtistsController(IVirtualPianoData data)
+        public MusicCategoriesController(IVirtualPianoData data)
             : base(data)
         {
         }
@@ -33,26 +33,26 @@
 
         public ActionResult Read([DataSourceRequest]DataSourceRequest request)
         {
-            var artists = this.Data.Artists.All()
+            var musicCategories = this.Data.MusicSheetsCategories.All()
                 .Project()
-                .To<ArtistsViewModel>()
+                .To<MusicCategoriesViewModel>()
                 .ToDataSourceResult(request);
 
-            return Json(artists);
+            return Json(musicCategories);
         }
 
         [HttpPost]
-        public ActionResult Create([DataSourceRequest]DataSourceRequest request, ArtistsViewModel inputModel)
+        public ActionResult Create([DataSourceRequest]DataSourceRequest request, MusicCategoriesViewModel inputModel)
         {
             if (inputModel != null && ModelState.IsValid)
             {
-                var dbModel = new Artist()
+                var dbModel = new MusicSheetsCategory()
                 {
                     Name = inputModel.Name,
                     CreatedOn = DateTime.Now
                 };
 
-                this.Data.Artists.Add(dbModel);
+                this.Data.MusicSheetsCategories.Add(dbModel);
                 this.Data.SaveChanges();
 
                 inputModel.Id = dbModel.Id;
@@ -62,11 +62,11 @@
         }
 
         [HttpPost]
-        public ActionResult Update([DataSourceRequest]DataSourceRequest request, ArtistsViewModel inputModel)
+        public ActionResult Update([DataSourceRequest]DataSourceRequest request, MusicCategoriesViewModel inputModel)
         {
             if (inputModel != null && ModelState.IsValid)
             {
-                var dbModel = this.Data.Artists.GetById(inputModel.Id);
+                var dbModel = this.Data.MusicSheetsCategories.GetById(inputModel.Id);
 
                 dbModel.Name = inputModel.Name;
                 dbModel.ModifiedOn = DateTime.Now;

@@ -1,14 +1,14 @@
-﻿@using VirtualPiano.Web.Areas.Administration.ViewModels.Artists
+﻿@using VirtualPiano.Web.Areas.Administration.ViewModels.OpenningsCategories
 @{
-    ViewBag.Title = "Artists";
-    const string ControllerName = "Artists";
+    ViewBag.Title = "Opennings Categories";
+    const string ControllerName = "OpenningsCategories";
 }
 
 <div class="page-header">
     <h2>@ViewBag.Title</h2>
 </div>
 
-@(Html.Kendo().Grid<ArtistsViewModel>()
+@(Html.Kendo().Grid<OpenningCategoriesViewModel>()
     .Name("music-sheets-grid")
     .Columns(columns =>
     {

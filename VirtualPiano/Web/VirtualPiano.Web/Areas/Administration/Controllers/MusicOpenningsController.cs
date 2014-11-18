@@ -33,12 +33,12 @@
 
         public ActionResult Read([DataSourceRequest]DataSourceRequest request)
         {
-            var musicSheets = this.Data.MusicAds.All()
+            var opennings = this.Data.MusicAds.All()
                 .Project()
                 .To<MusicAdsViewModel>()
                 .ToDataSourceResult(request);
 
-            return Json(musicSheets);
+            return Json(opennings);
         }
 
         [HttpPost]

@@ -16,16 +16,15 @@
     using VirtualPiano.Data;
     using VirtualPiano.Models;
     using VirtualPiano.Web.Areas.Administration.Controllers.Base;
-    using VirtualPiano.Web.Areas.Administration.ViewModels.Artists;
+    using VirtualPiano.Web.Areas.Administration.ViewModels.OpenningsCategories;
 
-    public class ArtistsController : AdminController
+    public class OpenningsCategoriesController : AdminController
     {
-        public ArtistsController(IVirtualPianoData data)
+        public OpenningsCategoriesController(IVirtualPianoData data)
             : base(data)
         {
         }
-
-        // GET: Administration/Artists
+        // GET: Administration/OpenningsCategories
         public ActionResult Index()
         {
             return View();
@@ -33,26 +32,26 @@
 
         public ActionResult Read([DataSourceRequest]DataSourceRequest request)
         {
-            var artists = this.Data.Artists.All()
+            var adCategories = this.Data.AdCategories.All()
                 .Project()
-                .To<ArtistsViewModel>()
+                .To<OpenningCategoriesViewModel>()
                 .ToDataSourceResult(request);
 
-            return Json(artists);
+            return Json(adCategories);
         }
 
         [HttpPost]
-        public ActionResult Create([DataSourceRequest]DataSourceRequest request, ArtistsViewModel inputModel)
+        public ActionResult Create([DataSourceRequest]DataSourceRequest request, OpenningCategoriesViewModel inputModel)
         {
             if (inputModel != null && ModelState.IsValid)
             {
-                var dbModel = new Artist()
+                var dbModel = new AdCategory()
                 {
                     Name = inputModel.Name,
                     CreatedOn = DateTime.Now
                 };
 
-                this.Data.Artists.Add(dbModel);
+                this.Data.AdCategories.Add(dbModel);
                 this.Data.SaveChanges();
 
                 inputModel.Id = dbModel.Id;
@@ -62,11 +61,11 @@
         }
 
         [HttpPost]
-        public ActionResult Update([DataSourceRequest]DataSourceRequest request, ArtistsViewModel inputModel)
+        public ActionResult Update([DataSourceRequest]DataSourceRequest request, OpenningCategoriesViewModel  inputModel)
         {
             if (inputModel != null && ModelState.IsValid)
             {
-                var dbModel = this.Data.Artists.GetById(inputModel.Id);
+                var dbModel = this.Data.AdCategories.GetById(inputModel.Id);
 
                 dbModel.Name = inputModel.Name;
                 dbModel.ModifiedOn = DateTime.Now;

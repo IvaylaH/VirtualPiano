@@ -6,7 +6,7 @@
 
     using VirtualPiano.Data.Common.Models;
 
-    public class AdCategory
+    public class AdCategory : AuditInfo
     {
         private ICollection<MusicAd> musicAds;
 
