@@ -3,7 +3,9 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public class Artist
+    using VirtualPiano.Data.Common.Models;
+
+    public class Artist : DeletableEntity
     {
         private ICollection<MusicSheet> musicSheets;
 

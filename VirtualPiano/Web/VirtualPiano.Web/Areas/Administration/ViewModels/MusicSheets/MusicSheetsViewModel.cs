@@ -1,9 +1,11 @@
 ﻿namespace VirtualPiano.Web.Areas.Administration.ViewModels.MusicSheets
 {
-    using AutoMapper;
-    using AutoMapper.QueryableExtensions;
     using System.ComponentModel.DataAnnotations;
     using System.Web.Mvc;
+
+    using AutoMapper;
+    using AutoMapper.QueryableExtensions;
+
     using VirtualPiano.Models;
     using VirtualPiano.Web.Infrastructure.Mapping;
 

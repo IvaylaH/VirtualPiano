@@ -209,7 +209,9 @@
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\Base\AdminController.cs" />
     <Compile Include="Areas\Administration\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Administration\Controllers\MusicOpenningsController.cs" />
     <Compile Include="Areas\Administration\Controllers\MusicSheetsController.cs" />
+    <Compile Include="Areas\Administration\ViewModels\MusicOpennings\MusicAdsViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\MusicSheets\MusicSheetsViewModel.cs" />
     <Compile Include="Areas\MusicOpennings\Controllers\AuthorsController.cs" />
     <Compile Include="Areas\MusicOpennings\Controllers\CategoriesController.cs" />
@@ -547,6 +549,7 @@
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\String.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\Time.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\Url.cshtml" />
+    <Content Include="Areas\Administration\Views\MusicOpennings\Index.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="imgs\favicons\notes.ico" />
     <Content Include="imgs\favicons\piano.ico" />

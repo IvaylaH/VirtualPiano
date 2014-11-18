@@ -30,14 +30,13 @@ namespace VirtualPiano.Web
             bundles.Add(new StyleBundle("~/Content/kendoCss").Include(
                     "~/Content/kendo/kendo.common.min.css", 
                     "~/Content/kendo/kendo.common-bootstrap.min.css",
-                    "~/Content/kendo/kendo.moonlight.min.css"));
+                    "~/Content/kendo/kendo.silver.min.css"));
         }
 
         private static void RegisterScriptBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                     "~/Scripts/kendo/jquery.min.js"));
-            //.Include("~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
                     "~/Scripts/kendo/kendo.all.min.js",

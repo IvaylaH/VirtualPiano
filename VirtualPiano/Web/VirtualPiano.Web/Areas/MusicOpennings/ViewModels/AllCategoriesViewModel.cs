@@ -20,7 +20,9 @@
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<AdCategory, AllCategoriesViewModel>()
-                .ForMember(dest => dest.Opennings, opt => opt.MapFrom(category => category.MusicAds.AsQueryable()
+                .ForMember(dest => dest.Opennings, opt => opt.MapFrom(category => category.MusicAds
+                    .AsQueryable()
+                    .Where(post => !post.IsDeleted)
                     .OrderBy(ad => ad.Title)
                     .Select(ad => new OpenningBasicInfoViewModel()
                     {

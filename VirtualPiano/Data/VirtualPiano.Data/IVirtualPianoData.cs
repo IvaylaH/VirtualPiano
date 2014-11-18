@@ -24,6 +24,7 @@
         IRepository<Artist> Artists { get; }
 
         IRepository<AdCategory> AdCategories { get; }
+
         int SaveChanges();
     }
 }

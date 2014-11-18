@@ -36,8 +36,6 @@
 
         public IDbSet<Teacher> Teachers { get; set; }
 
-        // public IDbSet<ApplicationUser> Users { get; set; }
-
         public override int SaveChanges()
         {
             this.ApplyAuditInfoRules();

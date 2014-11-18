@@ -21,7 +21,7 @@
 
         public string Name { get; set; }
 
-        public IEnumerable<CollectionOfSheetViewModel> MusicSheets
+        public virtual IEnumerable<CollectionOfSheetViewModel> MusicSheets
         {
             get { return this.musicSheets; }
             set { this.musicSheets = value; }
@@ -30,7 +30,9 @@
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<Artist, AllArtistsViewModel>()
-                .ForMember(dest => dest.MusicSheets, opt => opt.MapFrom(artist => artist.MusicSheets.AsQueryable()
+                .ForMember(dest => dest.MusicSheets, opt => opt.MapFrom(artist => artist.MusicSheets
+                    .AsQueryable()
+                    .Where(sheet => !sheet.IsDeleted)
                     .OrderBy(sheet => sheet.Title)
                     .Select(sheets => new CollectionOfSheetViewModel()
                     {

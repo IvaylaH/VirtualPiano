@@ -1,0 +1,45 @@
+﻿@using VirtualPiano.Web.Areas.Administration.ViewModels.MusicOpennings
+@{
+    ViewBag.Title = "Music Opennings";
+    const string ControllerName = "MusicOpennings";
+}
+
+<div class="page-header">
+    <h2>@ViewBag.Title</h2>
+</div>
+
+@(Html.Kendo().Grid<MusicAdsViewModel>()
+    .Name("music-sheets-grid")
+    .Columns(columns =>
+    {
+        columns.Bound(cols => cols.Id).Width(25);
+        columns.Bound(cols => cols.Title).Width(100);
+        columns.Bound(cols => cols.Content).Width(350);
+        columns.Bound(cols => cols.AuthorName).Width(75);
+        columns.Bound(cols => cols.CategoryName).Width(75);
+        columns.Bound(cols => cols.CreatedOn).Format("{0:dddd, MMMM d, yyyy}").Locked(true);
+        columns.Bound(cols => cols.IsDeleted).Locked(true);
+        columns.Bound(cols => cols.DeletedOn).Format("{0:dddd, MMMM d, yyyy}").Hidden(true).Locked(true);
+        columns.Bound(cols => cols.ModifiedOn).Format("{0:dddd, MMMM d, yyyy}").Hidden(true).Locked(true);
+        columns.Command(cols => cols.Edit()).Title("Edit Sheet").Width(55);
+        columns.Command(cols => cols.Destroy()).Title("Delete Sheet").Width(55);
+    })
+    .Sortable()
+    .Groupable()
+    .Editable(edit => edit.Mode(GridEditMode.PopUp))
+    .ToolBar(toolBar => toolBar.Create())
+    .Pageable(pageable => pageable
+        .Refresh(true)
+        .PageSizes(true)
+        .ButtonCount(5)
+    )
+    .DataSource(dataSource => dataSource.Ajax()
+        .Model(model => model.Id(sheet => sheet.Id))
+        .Read(read => read.Action("Read", ControllerName))
+        .Create(create => create.Action("Create", ControllerName))
+        .Update(update => update.Action("Update", ControllerName))
+        .Destroy(destroy => destroy.Action("Destroy", ControllerName))
+    )
+)
+<br />
+

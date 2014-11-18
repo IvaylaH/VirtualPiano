@@ -15,13 +15,14 @@
 
         public string Name { get; set; }
 
-        public IEnumerable<CollectionOfSheetViewModel> MusicSheets { get; set; }
+        public virtual IEnumerable<CollectionOfSheetViewModel> MusicSheets { get; set; }
 
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<MusicSheetsCategory, CategoriesViewModel>()
                 .ForMember(dest => dest.MusicSheets, opt => opt.MapFrom(category => category.MusicSheets
                     .AsQueryable()
+                    .Where(sheet => !sheet.IsDeleted)
                     .OrderBy(sheet => sheet.Title)
                     .Select(sheets => new CollectionOfSheetViewModel()
                     {

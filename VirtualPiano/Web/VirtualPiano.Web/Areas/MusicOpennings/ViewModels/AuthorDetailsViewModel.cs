@@ -57,7 +57,9 @@
             configuration.CreateMap<ApplicationUser, AuthorDetailsViewModel>()
                 .ForMember(dest => dest.FullName, opt => opt.MapFrom(author => author.FirstName + " " + author.LastName))
                 .ForMember(dest => dest.CreatedOn, opt => opt.MapFrom(author => author.CreatedOn))
-                .ForMember(dest => dest.Ads, opt => opt.MapFrom(author => author.Ads.AsQueryable()
+                .ForMember(dest => dest.Ads, opt => opt.MapFrom(author => author.Ads
+                    .AsQueryable()
+                    .Where(post => !post.IsDeleted)
                     .OrderBy(ad => ad.Title)
                     .Select(ad => new AuthorsAdViewModel()
                     {

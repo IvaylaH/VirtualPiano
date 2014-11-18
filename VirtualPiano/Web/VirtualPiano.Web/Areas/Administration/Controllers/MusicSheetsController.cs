@@ -1,6 +1,7 @@
 ﻿namespace VirtualPiano.Web.Areas.Administration.Controllers
 {
     using System;
+    using System.Data.Entity;
     using System.Linq;
     using System.Web.Mvc;
 
@@ -46,8 +47,6 @@
                 var category = this.GetCategory(inputModel.CategoryName);
 
                 var artist = this.GetArtist(inputModel.ArtistName);
-
-                // TODO: validation for category
 
                 if (artist == null)
                 {
@@ -115,33 +114,30 @@
         [HttpPost]
         public ActionResult Destroy([DataSourceRequest]DataSourceRequest request, MusicSheetsViewModel inputModel)
         {
-            //if (inputModel != null && ModelState.IsValid)
-            //{
-            //    var dbModel = this.Data.MusicSheets.GetById(inputModel.Id);
-            //    var category = this.GetCategory(inputModel.CategoryName);
-            //    var artist = this.GetArtist(inputModel.ArtistName);
+            if (inputModel != null && ModelState.IsValid)
+            {
+                var dbModel = this.Data.MusicSheets.All()
+                    .FirstOrDefault(sheet => sheet.Id == inputModel.Id);
 
-            //    category.MusicSheets.Remove(dbModel);
-            //    artist.MusicSheets.Remove(dbModel);
+                this.Data.MusicSheets.Delete(dbModel);
+                this.Data.SaveChanges();
+            }
 
-            //    this.Data.MusicSheets.Delete(dbModel);
-            //    this.Data.SaveChanges();
-            //}
-
-            //return Json(new[] { inputModel }.ToDataSourceResult(request, ModelState));
-            return null;
+            return Json(new[] { inputModel }.ToDataSourceResult(request, ModelState));
         }
 
         private Artist GetArtist(string artistName)
         {
             return this.Data.Artists.All()
+                .Include(a => a.MusicSheets)
                     .FirstOrDefault(a => a.Name == artistName);
         }
 
         private MusicSheetsCategory GetCategory(string categoryName)
         {
             return this.Data.MusicSheetsCategories.All()
-                                .FirstOrDefault(c => c.Name == categoryName);
+                .Include(c => c.MusicSheets)
+                    .FirstOrDefault(c => c.Name == categoryName);
         }
 
         private Artist CreateNewArtist(string artistName)
